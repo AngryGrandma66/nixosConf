@@ -9,4 +9,13 @@
 
   boot.zramSwap.enable = true;
   boot.zramSwap.swapSize = 2048;
+
+
+
+   boot.loader.grub.extraEntries = ''
+      submenu "Rollbacks" {
+        ${config.boot.loader.grub.extraEntries}
+      }
+    '';
+    system.autoUpgrade.allowReboot = false;
 }

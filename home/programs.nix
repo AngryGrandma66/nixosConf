@@ -12,6 +12,15 @@
   services.swaync.enable              = true;
 services.udiskie.enable = true;
 programs.podman.enable = true;
+
+
+services.swaync.battery = {
+  enable        = true;
+  notifyOnLow   = true;   # pop-up at 15%
+  notifyOnFull  = true;   # pop-up at 100%
+  lowThreshold  = 15;
+};
+
   home.packages = with pkgs; [
     # Bluetooth & power
     blueman bluez bluez_utils brightnessctl
