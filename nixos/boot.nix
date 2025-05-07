@@ -5,4 +5,8 @@
   boot.loader.grub.efiInstallAsRemovable = true;
   boot.loader.grub.device                = "/dev/sda";
   hardware.cpu.intel.updateMicrocode     = true;
+
+
+  boot.zramSwap.enable = true;
+  boot.zramSwap.swapSize = 2048;
 }

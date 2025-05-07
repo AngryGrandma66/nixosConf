@@ -10,7 +10,8 @@
   services.gpg-agent.enable           = true;
   services.gpg-agent.enableSSHSupport = true;
   services.swaync.enable              = true;
-
+services.udiskie.enable = true;
+programs.podman.enable = true;
   home.packages = with pkgs; [
     # Bluetooth & power
     blueman bluez bluez_utils brightnessctl
@@ -40,5 +41,9 @@
 
     # Printer GUI (if CUPS GUI needed)
     system-config-printer
+
+
+    #automatic mounting
+    udiskie
   ];
 }

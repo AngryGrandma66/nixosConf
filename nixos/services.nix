@@ -5,6 +5,9 @@
   hardware.bluetooth.powerOnBoot = false;
   programs.zsh.enable = true;
 
+
+  services.oomd.enable = true;
+
   environment.systemPackages = with pkgs; [
     polkit_gnome
     xdg-desktop-portal-gtk

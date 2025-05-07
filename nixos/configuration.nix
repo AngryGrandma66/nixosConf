@@ -2,13 +2,23 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./boot.nix       ./sddm.nix
-    ./sound.nix      ./time.nix
-    ./polkit.nix     ./security.nix
+    ./boot.nix
+    ./sddm.nix
+    ./sound.nix
+    ./time.nix
+    ./polkit.nix
+    ./security.nix
     ./virtualization.nix
-    ./networking.nix ./services.nix
-    ./hyprland.nix   ./users.nix
+    ./networking.nix
+    ./services.nix
+    ./hyprland.nix
+    ./users.nix
     ./printing.nix
+    ./fonts.nix
+    ./locale.nix
+    ./power.nix
+    ./trim.nix
+    ./hibernate.nix
   ];
 
   nixpkgs.config.allowUnfree = true;

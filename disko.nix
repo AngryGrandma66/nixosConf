@@ -22,7 +22,7 @@
               };
             };
             swap = {
-              size = "10240M"; # Adjust swap size as needed
+              size = "16384M"; # Adjust swap size as needed
               type = "8200";  # Linux swap type in GPT
               content = {
                 type = "swap";
