@@ -19,6 +19,8 @@
     ./power.nix
     ./trim.nix
     ./hibernate.nix
+    ./filesystems.nix
+    ./themes.nix
   ];
 
   nixpkgs.config.allowUnfree = true;

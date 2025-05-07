@@ -5,6 +5,7 @@
   hardware.bluetooth.powerOnBoot = false;
   programs.zsh.enable = true;
 
+  services.fwupd.enable = true;
 
   services.oomd.enable = true;
 

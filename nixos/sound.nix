@@ -22,4 +22,10 @@
 
   # Use WirePlumber as the PipeWire policy/session manager
   services.wireplumber.enable = true;
+
+
+  environment.systemPackages = with pkgs; [
+      pavucontrol  # Pulse/PipeWire GUI mixer
+      pamixer      # Terminal mixer
+    ];
 }

@@ -32,7 +32,7 @@ programs.podman.enable = true;
     go nodejs npm php python314Full
 
     # JetBrains IDEs (Ultimate with IdeaVim)
-    (pkgs.jetbrains.plugins.addPlugins pkgs.jetbrains.idea-ultimate [ "ideavim" ])
+    pkgs.jetbrains.idea-ultimate
     pkgs.jetbrains.webstorm
     pkgs.jetbrains.phpstorm
 
@@ -45,5 +45,13 @@ programs.podman.enable = true;
 
     #automatic mounting
     udiskie
+
+
+    #waybar
+    waybar waybar-battery waybar-cpu
+
+
+    #printer icons
+    print-manager
   ];
 }
