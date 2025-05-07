@@ -14,7 +14,6 @@
     ./hyprland.nix
     ./users.nix
     ./printing.nix
-    ./fonts.nix
     ./locale.nix
     ./power.nix
     ./trim.nix

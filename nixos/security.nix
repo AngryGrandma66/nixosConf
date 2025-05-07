@@ -3,7 +3,7 @@
   security.sudo.enable       = true;
   nixpkgs.config.allowUnfree = true;
 
-services.systemd.journald = {
+services.journald = {
   storage = "persistent";
   extraConfig = ''
     SystemMaxUse=200M

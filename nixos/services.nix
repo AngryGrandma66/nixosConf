@@ -7,7 +7,6 @@
 
   services.fwupd.enable = true;
 
-  services.oomd.enable = true;
 
   environment.systemPackages = with pkgs; [
     polkit_gnome

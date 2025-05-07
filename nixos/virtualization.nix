@@ -2,12 +2,7 @@
 {
  virtualisation.libvirtd = {
   enable      = true;
-  qemuPackage = pkgs.qemu_kvm;
-  enable      = true;
-  qemu = {
-    enable  = true;
-    package = pkgs.qemu_kvm;    # use new `.qemu.package` field
-  };
+  qemu.package = pkgs.qemu_kvm;
  };
    virtualisation.podman.enable        = true;
 }

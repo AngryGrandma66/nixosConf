@@ -7,14 +7,14 @@
   hardware.cpu.intel.updateMicrocode     = true;
 
 
-  boot.zramSwap.enable = true;
-  boot.zramSwap.swapSize = 2048;
-
+  zramSwap = {
+    enable        = true;    # turn on zram swap
+    memoryPercent = 20;      # use 20% of RAM for compressed swap
+  };
 
 
    boot.loader.grub.extraEntries = ''
       submenu "Rollbacks" {
-        ${config.boot.loader.grub.extraEntries}
       }
     '';
     system.autoUpgrade.allowReboot = false;

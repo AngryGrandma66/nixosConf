@@ -12,7 +12,7 @@
   services.swaync.enable              = true;
 services.udiskie.enable = true;
 programs.podman.enable = true;
-
+  fonts.fontconfig.enable = true;
 
 services.swaync.battery = {
   enable        = true;
@@ -62,5 +62,9 @@ services.swaync.battery = {
 
     #printer icons
     print-manager
+
+
+    #nerd Font
+       (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
 }

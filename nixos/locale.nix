@@ -1,9 +1,10 @@
+{ config, lib, pkgs, ... }:
 {
-  i18n.consoleKeyMap = "cz-qwerty";     # for virtual consoles
+  console.keyMap = "cz";
   services.xserver = {
     enable = true;
     xkb = {
-      layout = ["us" "cz" ];           # primary , US fallback Czech
+      layout = "us,cz" ;
       options = "grp:alt_shift_toggle"; # use Alt-Shift to switch
     };
   };

@@ -18,10 +18,10 @@
 
     # JACK compatibility (disable unless you need it)
     jack.enable = false;
+  # Use WirePlumber as the PipeWire policy/session manager
+  wireplumber.enable = true;
   };
 
-  # Use WirePlumber as the PipeWire policy/session manager
-  services.wireplumber.enable = true;
 
 
   environment.systemPackages = with pkgs; [
