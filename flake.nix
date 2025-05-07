@@ -14,7 +14,7 @@
     system = "x86_64-linux";
     pkgs   = import nixpkgs { inherit system; config = { allowUnfree = true; }; };
   in {
-    nixosConfigurations.martin = pkgs.lib.nixosSystem {
+    nixosConfigurations.martin = nixpkgs.lib.nixosSystem {
       inherit system;
       modules = [ ./nixos/configuration.nix ];
     };

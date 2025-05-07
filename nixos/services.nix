@@ -1,7 +1,9 @@
 { config, pkgs, ... }:
 {
   services.openssh.enable   = true;
-  services.bluetooth.enable = true;
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = false;
+  programs.zsh.enable = true;
 
   environment.systemPackages = with pkgs; [
     polkit_gnome

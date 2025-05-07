@@ -14,7 +14,7 @@
   # mDNS/DNS-SD discovery for network printers
   services.avahi = {
     enable      = true;
-    nssmdns     = true;  # lets you resolve printer.local hostnames
+    nssmdns4     = true;  # lets you resolve printer.local hostnames
     openFirewall= true;  # opens UDP/5353 for discovery
   };
 

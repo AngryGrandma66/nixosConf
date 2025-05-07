@@ -4,7 +4,7 @@
   services.xserver.enable = true;
 
   # SDDM display manager on X11 with Breeze theme
-  services.xserver.displayManager.sddm = {
+  services.displayManager.sddm = {
     enable = true;
     theme  = "breeze";
   };}
