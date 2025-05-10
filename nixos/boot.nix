@@ -6,6 +6,9 @@
   boot.loader.grub.device                = "/dev/nvme0n1";
   hardware.cpu.intel.updateMicrocode     = true;
 
+  boot.kernelParams = [
+    "button.lid_init_state=open"
+  ];
 
   zramSwap = {
     enable        = true;    # turn on zram swap
