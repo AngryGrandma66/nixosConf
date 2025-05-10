@@ -1,0 +1,32 @@
+{
+  "layer": "top",
+  "modules-left":  ["hyprland/workspaces"],
+  "modules-right": ["clock"],
+
+
+  "hyprland/workspaces": {
+    "format": "{name} {icon}",
+
+
+    "format-icons": {
+      "1": "",        // terminal on ws 1
+      "2": "",         // browser on ws 2
+      "3": "",        // editor on ws 3
+      "4": "",        // music on ws 4
+      "5": "",        // chat on ws 5
+      "active": "",   // active workspace
+      "default": ""   // any other non-active
+    },
+
+
+    "persistent-workspaces": {
+      "*": 5
+    },
+
+
+    "all-outputs": false,
+
+
+    "sort-by": "id"
+  }
+}
