@@ -22,7 +22,7 @@
 
     // Optional: click to launch your power manager
     "on-click": "xfce4-power-manager-settings"
-  }
+  },
   "hyprland/workspaces": {
     "format": "{name} {icon}",
 
