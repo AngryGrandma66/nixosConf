@@ -11,7 +11,7 @@ alias ls='eza'
 # long, human-readable, all files, dirs first
 alias ll='eza -lha --group-directories-first'
 # include hidden files, no total line
-alias la='eza -lAh --group-directories-firs
+alias la='eza -lAh --group-directories-firs'
 
 export FZF_DEFAULT_COMMAND='eza -a --color=always'
 # add a nice layout & border
