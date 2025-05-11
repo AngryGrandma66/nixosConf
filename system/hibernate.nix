@@ -21,7 +21,7 @@
   ################################
   boot.kernelParams = [
     "resume=/dev/nvme0n1p3"
-#   "mem_sleep_default=deep"
+   "mem_sleep_default=deep"
     ];
 
   ########################################################
@@ -38,8 +38,8 @@
   ######################################################
   services.logind = {
     # On lid close: suspend, then after HibernateDelaySec → hibernate
-    #lidSwitch              = "suspend-then-hibernate";
-    lidSwitch              = "suspend";
+    lidSwitch              = "suspend-then-hibernate";
+
     # Power key immediately hibernates
     powerKey               = "hibernate";
     # Long-press still powers off
@@ -50,5 +50,18 @@
 
     # Suspend key just suspends
     suspendKey             = "suspend";
+  };
+  systemd.services.acpiWakeupAll = {
+    description = "Enable all ACPI wake-up devices";
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = ''
+        # flip every disabled entry to enabled
+        for D in $(grep disabled /proc/acpi/wakeup | awk '{print $1}'); do
+          echo $D > /proc/acpi/wakeup
+        done
+      '';
+    };
   };
 }
