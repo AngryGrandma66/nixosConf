@@ -22,7 +22,7 @@
     boot.kernelParams = [
         "resume=/dev/nvme0n1p3"
             "mem_sleep_default=deep"
-            "acpi_sleep=s3_mode"
+            "acpi_sleep=old_ordering"
     ];
 
 ########################################################
