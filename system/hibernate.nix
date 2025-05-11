@@ -19,12 +19,16 @@
   ################################
   # 2) Deep sleep (S3) instead of s2idle
   ################################
-  boot.kernelParams = [ "mem_sleep_default=deep" ];
+  boot.kernelParams = [
+    "resume=/dev/nvme0n1p3"
+   "mem_sleep_default=deep"
+    ];
 
   ########################################################
   # 3) Suspend-then-hibernate: first RAM, then after 30 minutes
   ########################################################
   systemd.sleep.extraConfig = ''
+    [Sleep]
     SuspendState=mem
     HibernateDelaySec=30min
   '';
