@@ -8,6 +8,8 @@
 
   boot.kernelParams = [
     "button.lid_init_state=open"
+    "i915.enable_psr=0"
+  "i915.enable_rc6=0"
   ];
 
   zramSwap = {
