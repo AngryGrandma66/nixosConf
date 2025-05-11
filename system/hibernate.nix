@@ -15,13 +15,12 @@
 # If you use a swap *file* instead, set boot.resumeDevice to the *partition*
 # and, if needed, add resume_offset via boot.kernelParams.
     boot.resumeDevice = "/dev/nvme0n1p3";
-  boot.kernelPackages = pkgs.linuxPackages_latest;
 ################################
 # 2) Deep sleep (S3) instead of s2idle
 ################################
     boot.kernelParams = [
         "resume=/dev/nvme0n1p3"
-            "mem_sleep_default=deep"
+#            "mem_sleep_default=deep"
 
     ];
 
