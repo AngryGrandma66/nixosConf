@@ -17,7 +17,7 @@
     "i915.enable_psr=1"              # panel self‐refresh
     "i915.enable_fbc=1"              # frame buffer compression (if supported)
   ];
-  services.cpupower = {
+  boot.cpupower = {
   enable   = true;
   governor = "schedutil";   # or "ondemand"
 };
