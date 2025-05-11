@@ -1,5 +1,5 @@
 # nixos/hibernate.nix
-{ config, lib, ... }:
+{pkgs, config, lib, ... }:
 {
 #########################
 # 1) Swap / resume device
