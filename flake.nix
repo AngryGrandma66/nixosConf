@@ -16,7 +16,7 @@
     in {
         nixosConfigurations.martin = nixpkgs.lib.nixosSystem {
             inherit system;
-            modules = [ ./nixos/configuration.nix 
+            modules = [ ./system/configuration.nix
                 home-manager.nixosModules.home-manager{
                     home-manager.useGlobalPkgs = true;
                     home-manager.useUserPackages = true; 
