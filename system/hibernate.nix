@@ -21,7 +21,7 @@
   ################################
   boot.kernelParams = [
     "resume=/dev/nvme0n1p3"
-   "mem_sleep_default=deep"
+#   "mem_sleep_default=deep"
     ];
 
   ########################################################
@@ -38,8 +38,8 @@
   ######################################################
   services.logind = {
     # On lid close: suspend, then after HibernateDelaySec → hibernate
-    lidSwitch              = "suspend-then-hibernate";
-
+    #lidSwitch              = "suspend-then-hibernate";
+    lidSwitch              = "suspend";
     # Power key immediately hibernates
     powerKey               = "hibernate";
     # Long-press still powers off
