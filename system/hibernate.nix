@@ -30,7 +30,7 @@
     systemd.sleep.extraConfig = ''
         [Sleep]
         SuspendState=mem
-            HibernateDelaySec=30min
+            HibernateDelaySec=60min
             '';
 
 ######################################################
