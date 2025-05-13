@@ -47,7 +47,7 @@
 
 
     "sort-by": "id"
-  }
+  },
   "custom/notification": {
   // disable the default tooltip (swaync has its own)
   "tooltip": false,
