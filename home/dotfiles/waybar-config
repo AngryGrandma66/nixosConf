@@ -1,7 +1,7 @@
 {
   "layer": "top",
   "modules-left":  ["hyprland/workspaces"],
-  "modules-center": ["clock"],
+  "modules-center": ["custom/notification","clock"],
   "modules-right": ["battery"],
 
   "battery": {
@@ -48,4 +48,33 @@
 
     "sort-by": "id"
   }
+  "custom/notification": {
+  // disable the default tooltip (swaync has its own)
+  "tooltip": false,
+  // show the count and an icon
+  "format": "{} {icon}",
+  // map swaync’s states to icons
+  "format-icons": {
+    "notification": "󱅫",
+    "none":         "",
+    "dnd-notification":        "",
+    "dnd-none":                "󰂛",
+    "inhibited-notification":  "",
+    "inhibited-none":          "",
+    "dnd-inhibited-notification": "",
+    "dnd-inhibited-none":         ""
+  },
+  // tell Waybar to expect JSON output
+  "return-type": "json",
+  // only run if swaync-client is installed
+  "exec-if": "which swaync-client",
+  // subscribe to add/close events
+  "exec": "swaync-client -swb",
+  // on left-click toggle the sidebar
+  "on-click": "sleep 0.1 && swaync-client -t -sw",
+  // on right-click clear all notifications
+  "on-click-right": "sleep 0.1 && swaync-client -d -sw",
+  // escape any special characters in the output
+  "escape": true
+}
 }
