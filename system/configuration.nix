@@ -21,7 +21,9 @@
     ./filesystems.nix
     ./themes.nix
   ];
-
+nix.extraOptions = ''
+    experimental-features = nix-command flakes
+  '';
   nixpkgs.config.allowUnfree = true;
   system.stateVersion     = "24.11";
 }
