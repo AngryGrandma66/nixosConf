@@ -16,4 +16,8 @@
 		source = ./dotfiles/hypr;
 		recursive = true;
 	};
+	home.file.".config/swaync"= {
+		source = ./dotfiles/swaync;
+		recursive = true;
+	};
 }
