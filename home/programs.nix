@@ -59,6 +59,8 @@
 
 #rofi
             rofi-wayland
+#obsidian
+            obsidian
 
 #thunar
             xfce.thunar xfce.thunar-volman xfce.thunar-archive-plugin xarchiver file-roller
