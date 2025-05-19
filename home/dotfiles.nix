@@ -20,4 +20,8 @@
 		source = ./dotfiles/swaync;
 		recursive = true;
 	};
+	home.file.".config/configScripts"= {
+		source = ./dotfiles/configScripts;
+		recursive = true;
+	};
 }

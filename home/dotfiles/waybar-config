@@ -2,7 +2,7 @@
   "layer": "top",
   "modules-left":  ["hyprland/workspaces"],
   "modules-center": ["custom/notification","clock"],
-  "modules-right": ["battery"],
+  "modules-right": ["custom/network","battery"],
 
   "battery": {
     // What gets printed; {capacity} is the % and {icon} is chosen from format-icons
@@ -77,4 +77,12 @@
   // escape any special characters in the output
   "escape": true
 }
+"custom/network": {
+    "exec": "~/.local/bin/waybar-nm-applet.sh",
+    "interval": 5,
+    "return-type": "json",
+    "on-click": "gnome-control-center wifi",    // or "nm-connection-editor"
+    "tooltip": true,
+    "max-length": 30
+  },
 }
