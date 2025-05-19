@@ -78,7 +78,7 @@
   "escape": true
 },
 "custom/network": {
-    "exec": "~/.local/bin/waybar-nm-applet.sh",
+    "exec": "~/.config/configScripts/waybar-nm-applet.sh",
     "interval": 5,
     "return-type": "json",
     "on-click": "gnome-control-center wifi",    // or "nm-connection-editor"
