@@ -63,6 +63,8 @@
             obsidian
 #hyprpaper
             hyprpaper
+#hypridle
+            hypridle
 
 #thunar
             xfce.thunar xfce.thunar-volman xfce.thunar-archive-plugin xarchiver file-roller
