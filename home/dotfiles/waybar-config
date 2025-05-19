@@ -76,7 +76,7 @@
   "on-click-right": "sleep 0.1 && swaync-client -d -sw",
   // escape any special characters in the output
   "escape": true
-}
+},
 "custom/network": {
     "exec": "~/.local/bin/waybar-nm-applet.sh",
     "interval": 5,
@@ -84,5 +84,5 @@
     "on-click": "gnome-control-center wifi",    // or "nm-connection-editor"
     "tooltip": true,
     "max-length": 30
-  },
+  }
 }
