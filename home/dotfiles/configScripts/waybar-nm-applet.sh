@@ -1,6 +1,4 @@
-#!/bin/bash
-#
-# waybar-nm-applet.sh — a simple NMCLI-based module for Waybar
+#!/usr/bin/env bash
 
 ICON_CONNECTED=""    # nf-fa-signal
 ICON_DISCONNECTED="" # nf-fa-times_circle
