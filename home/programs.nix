@@ -65,6 +65,8 @@
             hyprpaper
 #hypridle
             hypridle
+#hyprshot
+            hyprshot
 #nm applet
             networkmanagerapplet
 
