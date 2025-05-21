@@ -40,7 +40,7 @@
             pkgs.jetbrains.phpstorm
 
 # Screen-sharing client
-            vesktop
+
 
 # Printer GUI (if CUPS GUI needed)
             system-config-printer
