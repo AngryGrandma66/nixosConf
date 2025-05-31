@@ -1,0 +1,132 @@
+
+{
+    //left = clock ,idle_inhibitor,tray , current audio track
+    //center = workspaces 
+    //right = bluetooth audio indicator wifi/network speed ,current keyboard, battery ,swaync
+
+
+    "layer": "top",
+    "modules-left":  ["idle_inhibitor","clock","tray","mpris"],
+    "modules-center": ["hyprland/workspaces"],
+    "modules-right": ["group/sound","network","hyprland/language","battery","custom/notifications"],
+
+    "mpris": {
+        "format": " {status_icon} {dynamic}",
+        "interval": 1,
+        "dynamic-len": 40,
+        "status-icons": {
+            "playing": "▶",
+            "paused": "⏸",
+            "stopped": ""
+        },
+        "dynamic-order": ["title", "artist"],
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "󰥔 {0:%H:%M}",
+        "format-alt": "󰥔 {0:%H:%M}   {0:%d-%m-%Y}"
+    },
+    "tray": {
+        "spacing": 10,
+        "tooltip": false
+    },
+    "hyprland/workspaces": {
+        "format": "{icon}",
+
+
+        "format-icons": {
+            "active": "",   
+            "default": ""  
+        },
+
+        "all-outputs": true,
+
+
+        "sort-by": "id"
+    },
+    "hyprland/language": {
+        "format": "{short}",
+    },
+
+
+    "network": {
+        "format": "{ifname}",
+        "format-wifi": "  {signalStrength}%  {bandwidthDownBytes}  {bandwidthUpBytes} ",
+        "format-ethernet": "   {bandwidthDownBytes}  {bandwidthUpBytes} ",
+        "format-disconnected": "Not connected",
+        "tooltip-format": "  {ifname} via {gwaddri}",
+        "tooltip-format-wifi": "   {essid} ({signalStrength}%)",
+        "tooltip-format-ethernet": "  {ifname} ({ipaddr}/{cidr})",
+        "tooltip-format-disconnected": "Disconnected",
+        "max-length": 50,
+        "interval": 1,
+        "on-click": "nm-connection-editor"
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{volume}% {icon} ",
+        "format-bluetooth-muted": "  {icon} ",
+        "format-muted": " ",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": [" ", " ", " "]
+        },
+        "scroll-step": 5,
+        "on-click-right": "pavucontrol",
+        "on-click": "amixer set Master toggle"
+    },
+    "pulseaudio#mic": {
+        "format": "{icon} {format_source}",
+        "format-source": " {volume}%",
+        "format-source-muted": " ",
+        "on-scroll-up": "amixer set Capture 5%+",
+        "on-scroll-down": "amixer set Capture 5%-",
+        "on-click-right": "pavucontrol",
+        "on-click": "amixer set Capture toggle"
+    },
+
+    "group/sound": {
+        "orientation": "horizontal",
+        "modules": ["pulseaudio", "pulseaudio#mic"]
+    },
+
+
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{} {icon}",
+        "format-icons": {
+            "notification": "󱅫",
+            "none":         "",
+            "dnd-notification":        "",
+            "dnd-none":                "󰂛",
+            "inhibited-notification":  "",
+            "inhibited-none":          "",
+            "dnd-inhibited-notification": "",
+            "dnd-inhibited-none":         ""
+        },
+        "return-type": "json",
+
+        "exec-if": "which swaync-client",
+
+        "exec": "swaync-client -swb",
+
+        "on-click": "sleep 0.1 && swaync-client -t -sw",
+
+        "on-click-right": "sleep 0.1 && swaync-client -d -sw",
+
+        "escape": true
+    }
+}
