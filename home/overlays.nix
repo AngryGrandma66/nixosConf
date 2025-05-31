@@ -5,7 +5,7 @@ in
 {
 
   home.packages = with pkgs; [
-    (buildFHSEnv {
+    (buildFHSEnv{
       name       = "z-library-fhs";
       targetPkgs = _: [ zlibrary ];
       runScript  = "z-library";
@@ -36,6 +36,9 @@ in
         ps.expat
         ps.libxkbcommon
         ps.udev
+
+        ps.libgbm
+        ps.libdrm
       ];
     })
   ];
