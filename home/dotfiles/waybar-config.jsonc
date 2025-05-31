@@ -1,4 +1,7 @@
 {
+    //left = workspaces, current audio track
+    //center = swaync, clock
+    //right = tray bluetooth audio indicator wifi/network speed , battery
   "layer": "top",
   "modules-left":  ["hyprland/workspaces"],
   "modules-center": ["custom/notification","clock"],

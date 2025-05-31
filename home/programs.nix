@@ -12,12 +12,14 @@
     services.udiskie.enable = true;
     fonts.fontconfig.enable = true;
 
-    services.swaync.settings.battery = {
-        enable        = true;
-        notifyOnLow   = true;   # pop-up at 15%
-            notifyOnFull  = true;   # pop-up at 100%
-            lowThreshold  = 15;
-    };
+#  programs.thunar = {
+#      enable  = true;
+#      plugins = [
+#        pkgs.xfce.thunar-archive-plugin
+#        pkgs.xfce.thunar-volman
+#      ];
+#    };
+
     home.packages = with pkgs; [
 # Bluetooth & power
         blueman bluez brightnessctl
@@ -25,8 +27,8 @@
 # Monitoring & info
             btop htop fastfetch gnome-system-monitor powertop
 
-# Graphics & screenshots
-            eog gimp grim slurp swappy
+# Graphics 
+            eog gimp 
 
 # CLI utilities
             eza fzf git lazygit ripgrep bat unzip zip wget cliphist
@@ -38,8 +40,6 @@
             pkgs.jetbrains.idea-ultimate
             pkgs.jetbrains.webstorm
             pkgs.jetbrains.phpstorm
-
-# Screen-sharing client
 
 
 # Printer GUI (if CUPS GUI needed)
