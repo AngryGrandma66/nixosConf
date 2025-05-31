@@ -5,7 +5,7 @@ in
 {
 
   home.packages = with pkgs; [
-    (buildFHSUserEnv {
+    (buildFHSEnv {
       name       = "z-library-fhs";
       targetPkgs = _: [ zlibrary ];
       runScript  = "z-library";

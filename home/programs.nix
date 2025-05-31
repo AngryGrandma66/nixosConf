@@ -73,6 +73,6 @@
 #thunar
             xfce.thunar xfce.thunar-volman xfce.thunar-archive-plugin xarchiver file-roller
 #nerd Font
-            (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+            nerd-fonts.jetbrains-mono
             ];
 }
