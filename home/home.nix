@@ -4,5 +4,5 @@
   home.homeDirectory = "/home/martin";
   home.stateVersion  = "24.11";
 
-  imports = [ ./programs.nix ./dotfiles.nix ./devStuff ];
+  imports = [ ./programs.nix ./dotfiles.nix ./devStuff ./overlays.nix];
 }
