@@ -43,7 +43,7 @@ in
   xdg.desktopEntries.zlibrary = {
     name        = "Z-Library";
     comment     = "Electron-based eBook reader";
-    exec        = "z-library-fhs";   # no change here
+    exec        = "z-library-fhs"; 
     type        = "Application";
   };
 }
