@@ -6,12 +6,22 @@
 
 
     "layer": "top",
-    "modules-left":  ["idle_inhibitor","clock","tray","mpris"],
+    "modules-left":  ["clock","idle_inhibitor","tray","mpris"],
     "modules-center": ["hyprland/workspaces"],
-    "modules-right": ["group/sound","network","hyprland/language","battery","custom/notifications"],
+    "modules-right": ["group/sound","network","bluetooth","hyprland/language","battery","custom/notification"],
+
+    "bluetooth": {
+        "format": "󰂯",
+        "format-disabled": "󰂲",
+        "format-connected": "󰂱 {num_connections}",
+        "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "on-click": "bluetooth toggle"
+    },
 
     "mpris": {
-        "format": " {status_icon} {dynamic}",
+        "format": "{status_icon} {dynamic}",
         "interval": 1,
         "dynamic-len": 40,
         "status-icons": {
@@ -29,7 +39,26 @@
         }
     },
 
+    "battery":  {
+        "format" : "{icon} {capacity}󰏰",
+        "format-charging" : "{icon} {capacity}󰏰",
+        "format-icons" : {
+            "charging" : ["󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
+            "default" : ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+        },
+        "states" : {
+            "critical" : 15,
+            "warning" : 30
+        },
+        "interval": 30,  
+
+        "tooltip": true,  
+
+        "on-click": "xfce4-power-manager-settings"
+    },
+
     "clock": {
+
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format": "󰥔 {0:%H:%M}",
         "format-alt": "󰥔 {0:%H:%M}   {0:%d-%m-%Y}"
@@ -46,7 +75,9 @@
             "active": "",   
             "default": ""  
         },
-
+        "persistent-workspaces": {
+            "*": 5
+        },
         "all-outputs": true,
 
 
@@ -59,12 +90,12 @@
 
     "network": {
         "format": "{ifname}",
-        "format-wifi": "  {signalStrength}%  {bandwidthDownBytes}  {bandwidthUpBytes} ",
-        "format-ethernet": "   {bandwidthDownBytes}  {bandwidthUpBytes} ",
+        "format-wifi": "  {signalStrength}% ",
+        "format-ethernet": "  ",
         "format-disconnected": "Not connected",
         "tooltip-format": "  {ifname} via {gwaddri}",
-        "tooltip-format-wifi": "   {essid} ({signalStrength}%)",
-        "tooltip-format-ethernet": "  {ifname} ({ipaddr}/{cidr})",
+        "tooltip-format-wifi": "   {essid} ({signalStrength}%)  {bandwidthDownBytes}  {bandwidthUpBytes} ",
+        "tooltip-format-ethernet": "  {ifname} ({ipaddr}/{cidr})  {bandwidthDownBytes}  {bandwidthUpBytes} ",
         "tooltip-format-disconnected": "Disconnected",
         "max-length": 50,
         "interval": 1,
@@ -106,7 +137,7 @@
 
     "custom/notification": {
         "tooltip": false,
-        "format": "{} {icon}",
+        "format": "{icon}",
         "format-icons": {
             "notification": "󱅫",
             "none":         "",
