@@ -1,0 +1,189 @@
+/* Root bar styling */
+#waybar {
+  /* Semi‐transparent dark background with blur */
+  background: rgba(20, 20, 20, 0.35);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+  /* General font and text color */
+  font-family: "Segoe UI", sans-serif;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.85);
+
+  /* Ensure modules are centered vertically */
+  display: flex;
+  align-items: center;
+}
+
+/* Container regions (left, center, right) */
+#modules-left,
+#modules-center,
+#modules-right {
+  display: flex;
+  align-items: center;
+}
+
+/* Base module styling */
+.module {
+  padding: 0 8px;
+  margin: 0 4px;
+  border-radius: 4px;
+  transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+
+/* Subtle hover effect */
+.module:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 1);
+}
+
+/* === Clock === */
+#clock {
+  min-width: 70px;
+  text-align: center;
+}
+
+/* === Idle Inhibitor === */
+#idle_inhibitor {
+  padding: 0 6px;
+}
+
+/* === Tray === */
+#tray {
+  /* Tray spacing is controlled in config, but ensure icons don’t have extra background */
+}
+#tray img {
+  margin: 0 5px;
+  filter: brightness(0.9);
+  transition: filter 0.2s;
+}
+#tray img:hover {
+  filter: brightness(1.2);
+}
+
+/* === MPRIS (Audio Track) === */
+#mpris {
+  min-width: 100px;
+  text-align: center;
+}
+
+/* === Hyprland Workspaces === */
+/* Escape slash: “hyprland/workspaces” → “hyprland\/workspaces” */
+#hyprland\\/workspaces {
+  display: flex;
+  align-items: center;
+}
+#hyprland\\/workspaces .workspace {
+  margin: 0 4px;
+  transition: color 0.2s, background 0.2s;
+}
+#hyprland\\/workspaces .workspace.focused {
+  color: rgba(255, 255, 255, 1);
+}
+#hyprland\\/workspaces .workspace.occupied {
+  color: rgba(255, 255, 255, 0.8);
+}
+#hyprland\\/workspaces .workspace.empty {
+  color: rgba(255, 255, 255, 0.5);
+}
+#hyprland\\/workspaces .workspace:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+/* === Grouped Sound (pulseaudio & mic) === */
+#group\\/sound {
+  display: flex;
+  align-items: center;
+}
+#pulseaudio,
+#pulseaudio#mic {
+  min-width: 40px;
+  text-align: center;
+}
+
+/* === Network === */
+#network {
+  min-width: 60px;
+  text-align: center;
+}
+
+/* === Bluetooth === */
+#bluetooth {
+  min-width: 30px;
+  text-align: center;
+}
+
+/* === Hyprland Language === */
+#hyprland\\/language {
+  min-width: 30px;
+  text-align: center;
+}
+
+/* === Battery === */
+#battery {
+  min-width: 50px;
+  text-align: center;
+}
+#battery.low {
+  color: rgba(255, 100, 100, 0.9);
+}
+#battery.critical {
+  color: rgba(255, 70, 70, 1);
+}
+
+/* === Custom Notification === */
+#custom\\/notification {
+  min-width: 30px;
+  text-align: center;
+}
+
+/* Hover tooltips (for modules that show them) */
+.module[data-tooltip]:hover::after {
+  position: absolute;
+  z-index: 100;
+  top: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 8px;
+  border-radius: 4px;
+  background: rgba(30, 30, 30, 0.9);
+  color: #fff;
+  white-space: pre;
+  font-size: 11px;
+  pointer-events: none;
+  content: attr(data-tooltip);
+}
+
+/* Optional: reduce opacity of idle_inhibitor when deactivated */
+#idle_inhibitor.deactivated {
+  opacity: 0.5;
+}
+
+/* Subtle divider between left/center/right (if needed) */
+#modules-left::after,
+#modules-center::after {
+  content: "";
+  width: 1px;
+  height: 18px;
+  margin: 0 10px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Remove divider after right */
+#modules-right::after {
+  content: none;
+}
+
+/* If you want the bar itself to float (remove default padding/margins) */
+#waybar {
+  margin: 0;
+  padding: 0;
+}
+
+/* Final touch: ensure no outlines on click */
+.module:focus {
+  outline: none;
+}
+
