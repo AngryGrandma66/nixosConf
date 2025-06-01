@@ -1,10 +1,5 @@
 
 {
-    //left = clock ,idle_inhibitor,tray , current audio track
-    //center = workspaces 
-    //right = bluetooth audio indicator wifi/network speed ,current keyboard, battery ,swaync
-
-
     "layer": "top",
     "modules-left":  ["clock","idle_inhibitor","tray","mpris"],
     "modules-center": ["hyprland/workspaces"],
@@ -40,8 +35,8 @@
     },
 
     "battery":  {
-        "format" : "{icon} {capacity}󰏰",
-        "format-charging" : "{icon} {capacity}󰏰",
+        "format" : "{capacity}󰏰 {icon}",
+        "format-charging" : "{capacity}󰏰 {icon}",
         "format-icons" : {
             "charging" : ["󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
             "default" : ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]

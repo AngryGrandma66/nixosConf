@@ -12,14 +12,6 @@
     services.udiskie.enable = true;
     fonts.fontconfig.enable = true;
 
-#  programs.thunar = {
-#      enable  = true;
-#      plugins = [
-#        pkgs.xfce.thunar-archive-plugin
-#        pkgs.xfce.thunar-volman
-#      ];
-#    };
-
     home.packages = with pkgs; [
 # Bluetooth & power
         blueman bluez brightnessctl
@@ -36,7 +28,7 @@
 # Browsers & editors
             firefox neovim kitty
 
-# JetBrains IDEs (Ultimate with IdeaVim)
+# JetBrains IDEs 
             pkgs.jetbrains.idea-ultimate
             pkgs.jetbrains.webstorm
             pkgs.jetbrains.phpstorm
@@ -70,8 +62,11 @@
 #nm applet
             networkmanagerapplet
 
+#mpris for waybaraudio
+mpvScripts.mpris playerctl
+
 #thunar
-            xfce.thunar xfce.thunar-volman xfce.thunar-archive-plugin xarchiver file-roller
+            file-roller
 #nerd Font
             nerd-fonts.jetbrains-mono
             ];

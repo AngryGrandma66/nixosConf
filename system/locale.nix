@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 {
-  console.keyMap = "cz";
+  console.keyMap = "us";
   services.xserver = {
     enable = true;
     xkb = {

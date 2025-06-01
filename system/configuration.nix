@@ -20,6 +20,8 @@
     ./hibernate.nix
     ./filesystems.nix
     ./themes.nix
+    ./thunar.nix
+  ./ldfix.nix
   ];
 nix.extraOptions = ''
     experimental-features = nix-command flakes
