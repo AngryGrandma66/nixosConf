@@ -41,7 +41,7 @@
 #automatic mounting
             udiskie
 #vesktop
-vesktop
+            vesktop
 #waybar
             waybar
 
@@ -64,7 +64,8 @@ vesktop
 
 #mpris for waybaraudio
             mpvScripts.mpris playerctl
-
+#calibre
+            calibre
 #thunar
             file-roller
 #nerd Font
