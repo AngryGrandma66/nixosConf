@@ -40,8 +40,8 @@
 
 #automatic mounting
             udiskie
-
-
+#vesktop
+vesktop
 #waybar
             waybar
 
@@ -63,7 +63,7 @@
             networkmanagerapplet
 
 #mpris for waybaraudio
-mpvScripts.mpris playerctl
+            mpvScripts.mpris playerctl
 
 #thunar
             file-roller
