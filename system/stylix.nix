@@ -4,21 +4,18 @@
     stylix = {
         enable = true;
         image = ./wallpaper6.png;
-        autoEnable = true;
         polarity="dark";
 
-        homeManagerIntegration = {
-            autoImport = true;
-            followSystem = true;
-        };
+
 
         cursor = {
             package = pkgs.rose-pine-cursor;
             name = "rose-pine-cursor";
+            size = 10;
         };
         fonts = {
             monospace = {
-                package = nerd-fonts.jetbrains-mono;
+                package = pkgs.nerd-fonts.jetbrains-mono;
                 name = "JetBrainsMono Nerd Font Mono";
             };
             sansSerif = {
@@ -30,12 +27,12 @@
                 name = "DejaVu Serif";
             };
             sizes = {
-                applications = 15;
-                terminal = 15;
-                desktop = 15;
-                popups = 15;
+                applications = 11;
+                terminal = 11;
+                desktop = 10;
+                popups = 10;
             };
         };
 
-    }
+    };
 }
