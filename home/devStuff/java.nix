@@ -9,6 +9,7 @@
 
   # Symlink the JDK(s) you want. Here we have only jdk23, but you could add others.
   home.file."runtimes/java/23".source = "${pkgs.jdk23}";
+  home.file."runtimes/java/21".source = "${pkgs.jdk21}";
   # Make “current” point at jdk23 by default:
   home.file."runtimes/java/current".source = "${pkgs.jdk23}";
 

@@ -1,75 +1,61 @@
-/* Sleek, unobtrusive Waybar theme with transparent background and logical group separations */
 
-/* Bar container: semi-transparent with subtle blur */
 #waybar {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(10, 10, 10, 0.3);
   border: none;
+  margin: 0 10px 0 10px;
 }
 
-/* Default module styling: light text, consistent padding */
 #waybar .module {
   color: #e0e0e0;
-  padding: 0 10px;
+  padding: 0 10px 0 10px;
   margin: 0;
   font-size: 14px;
   background-color: transparent;
   transition: background-color 150ms ease;
 }
 
-/* Light separator between most modules */
-#waybar .module + .module {
-  border-left: 1px solid rgba(224, 224, 224, 0.2);
-}
 
-/* Slight hover effect to aid discoverability */
-#waybar .module:hover {
-  background-color: rgba(255, 255, 255, 0.05);
+#battery.critical:not(.charging) {
+    color: #f53c3c;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }
-
-/* =======================================================================
-   AUDIO GROUP (pulseaudio + pulseaudio-mic inside group/sound)
-   Remove internal separators, tighten spacing between audio + mic,
-   then add extra gap before the next group (network).
-   ======================================================================= */
-/* Inside the “group-sound” container, remove thin borders between its modules */
-#waybar #group-sound .module + .module {
-  border-left: none;
-  margin-left: 5px;
+#workspaces {
+    padding: 0px 5px;
 }
-
-/* Add a larger gap after the entire audio group before Network */
-#waybar #group-sound + #network {
-  margin-left: 20px;
+#workspaces button {
+    all:unset;
+    padding: 0px 5px;
+    color: rgba(120,120,120,.4);
+    transition: all .2s ease;
 }
-
-/* =======================================================================
-   WIFI + BLUETOOTH GROUP
-   Tighten spacing between network (Wi-Fi) and bluetooth, remove separator,
-   then add a larger gap after Bluetooth before the next module.
-   ======================================================================= */
-/* Between “network” and “bluetooth”: no thin border, small gap */
-#waybar #network + #bluetooth {
-  border-left: none;
-  margin-left: 5px;
+#workspaces button:hover {
+    color: rgba(255,255,255,.8);
+    border: none;
+    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .5);
+    transition: all 1s ease;
 }
-
-/* After “bluetooth”, add extra gap before “hyprland-language” */
-#waybar #bluetooth + #hyprland-language {
-  margin-left: 20px;
+#workspaces button.active {
+    color: rgba(200,200,200,.4);
+    border: none;
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
 }
-
-/* =======================================================================
-   REMAINING MODULES (language, battery, notification)
-   Keep consistent gaps between them where appropriate.
-   ======================================================================= */
-/* Between “hyprland-language” and “battery”: default thin border is fine,
-   but add a bit more breathing room */
-#waybar #hyprland-language + #battery {
-  margin-left: 20px;
+#workspaces button.empty {
+    color: rgba(80,80,80,.4);
+    border: none;
+    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .2);
 }
-
-/* Between “battery” and “custom-notification”: add larger gap */
-#waybar #battery + #custom-notification {
-  margin-left: 20px;
+#workspaces button.empty:hover {
+    color: rgba(255,255,255,.5);
+    border: none;
+    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .5);
+    transition: all 1s ease;
 }
-
+#workspaces button.empty.active {
+    color: rgba(230,230,230,.4);
+    border: none;
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
+}

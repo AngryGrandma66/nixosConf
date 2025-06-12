@@ -70,5 +70,8 @@
             file-roller
 #nerd Font
             nerd-fonts.jetbrains-mono
+            
+
+            wallust
             ];
 }

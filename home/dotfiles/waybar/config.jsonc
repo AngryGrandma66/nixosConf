@@ -1,10 +1,15 @@
-
 {
     "layer": "top",
-    "modules-left":  ["clock","idle_inhibitor","tray","mpris"],
+    "fixed-center":true,
+    "reload_style_on_change":true,
+    "modules-left":  ["custom/os_button","idle_inhibitor","tray","mpris"],
     "modules-center": ["hyprland/workspaces"],
-    "modules-right": ["group/sound","network","bluetooth","hyprland/language","battery","custom/notification"],
+    "modules-right": ["group/sound","network","hyprland/language","battery","clock","custom/notification"],
 
+    "custom/os_button": {
+        "format": "",
+        "tooltip": false
+    },
     "bluetooth": {
         "format": "󰂯",
         "format-disabled": "󰂲",
@@ -67,8 +72,9 @@
 
 
         "format-icons": {
-            "active": "",   
-            "default": ""  
+              "active": "",
+                "default": "",
+                "empty": ""
         },
         "persistent-workspaces": {
             "*": 5

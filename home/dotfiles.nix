@@ -6,8 +6,8 @@
 	home.file.".ideavimrc".source         = ./dotfiles/.ideavimrc;
 	home.file.".config/kitty/kitty.conf".source = ./dotfiles/kitty.conf;
 	home.file.".gitconfig".source         = ./dotfiles/.gitconfig;
-    home.file.".config/gtk-3.0/settings.ini".source = ./dotfiles/gtk-3.settings;
-    home.file.".config/gtk-4.0/settings.ini".source = ./dotfiles/gtk-4.settings;
+#    home.file.".config/gtk-3.0/settings.ini".source = ./dotfiles/gtk-3.settings;
+#    home.file.".config/gtk-4.0/settings.ini".source = ./dotfiles/gtk-4.settings;
 	home.file.".config/nvim"= {
 		source = ./dotfiles/nvim;
 		recursive = true;
