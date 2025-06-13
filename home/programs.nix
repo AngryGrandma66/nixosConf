@@ -38,8 +38,6 @@
             system-config-printer
 
 
-#automatic mounting
-            udiskie
 #vesktop
             vesktop
 #waybar

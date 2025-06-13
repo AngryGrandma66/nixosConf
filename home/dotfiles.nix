@@ -4,7 +4,6 @@
     home.file.".zshrc".source             = ./dotfiles/.zshrc;
     home.file.".tmux.conf".source         = ./dotfiles/.tmux.conf;
     home.file.".ideavimrc".source         = ./dotfiles/.ideavimrc;
-    home.file.".config/kitty/kitty.conf".source = ./dotfiles/kitty.conf;
     home.file.".gitconfig".source         = ./dotfiles/.gitconfig;
     home.file.".config/nvim"= {
         source = ./dotfiles/nvim;
@@ -26,7 +25,6 @@
         source = ./dotfiles/waybar;
         recursive = true;
     };
-
     gtk = {
         iconTheme.name   = "BeautyLine";
         iconTheme.package = pkgs.beauty-line-icon-theme;

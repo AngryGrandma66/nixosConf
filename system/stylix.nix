@@ -3,16 +3,6 @@
 {
     stylix = {
         enable = true;
-        image = ./wallpaper6.png;
-        polarity="dark";
-
-
-
-        cursor = {
-            package = pkgs.rose-pine-cursor;
-            name = "rose-pine-cursor";
-            size = 10;
-        };
         fonts = {
             monospace = {
                 package = pkgs.nerd-fonts.jetbrains-mono;
