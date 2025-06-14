@@ -8,7 +8,8 @@
 
     "custom/os_button": {
         "format": "",
-        "tooltip": false
+        "tooltip": false,
+        "on-click": "gnome-system-monitor"
     },
     "bluetooth": {
         "format": "󰂯",

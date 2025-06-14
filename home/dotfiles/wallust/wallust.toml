@@ -11,11 +11,11 @@
 
 # How the image is parse, in order to get the colors:
 # full - resized - wal - thumb -  fastresize - kmeans
-backend = "wal"
+backend = "full"
 
 # What color space to use to produce and select the most prominent colors:
 # lab - labmixed - lch - lchmixed
-color_space = "lchmixed"
+color_space = "lch"
 
 # Use the most prominent colors in a way that makes sense, a scheme color palette:
 # dark - dark16 - darkcomp - darkcomp16
@@ -23,12 +23,12 @@ color_space = "lchmixed"
 # harddark - harddark16 - harddarkcomp - harddarkcomp16
 # softdark - softdark16 - softdarkcomp - softdarkcomp16
 # softlight - softlight16 - softlightcomp - softlightcomp16
-palette = "harddark"
+palette = "darkcomp16"
 
 # Ensures a "readable contrast" (OPTIONAL, disabled by default)
 # Should only be enabled when you notice an unreadable contrast frequently happening
 # with your images. The reference color for the contrast is the background color.
-#check_contrast = true
+check_contrast = true
 
 # Color saturation, between [1% and 100%] (OPTIONAL, disabled by default)
 # usually something higher than 50 increases the saturation and below
@@ -47,3 +47,4 @@ waybar = { src = "waybar-colors.css", dst = "~/.config/wallust/results/waybar-co
 css= { src = "colors.css", dst = "~/.config/wallust/results/colors.css" }
 kitty= { src = "kitty-colors.conf", dst = "~/.config/wallust/results/kitty-colors.conf" }
 gtk= { src = "gtk-colors.css", dst = "~/.config/wallust/results/gtk-colors.css" }
+rofi= { src = "rofi-colors.rasi", dst = "~/.config/wallust/results/rofi-colors.rasi" }

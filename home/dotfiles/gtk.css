@@ -1,108 +1,113 @@
 @import url("../wallust/results/gtk-colors.css");
 
-/* Semantic mappings → Base16 slots */
+@define-color accent_color            @color13;
+@define-color accent_bg_color         @color13;
+@define-color accent_fg_color         @background;
 
-/* Accent colors → base0D (color13) */
-@define-color accent_color        @color13;
-@define-color accent_bg_color     @color13;
-@define-color accent_fg_color     @color0;
+@define-color destructive_color       @color8;
+@define-color destructive_bg_color    @color8;
+@define-color destructive_fg_color    @background;
 
-/* Destructive / error (red) → base08 (color8) */
-@define-color destructive_color   @color8;
-@define-color destructive_bg_color@color8;
-@define-color destructive_fg_color@color0;
+@define-color success_color           @color11;
+@define-color success_bg_color        @color11;
+@define-color success_fg_color        @background;
 
-@define-color error_color         @color8;
-@define-color error_bg_color      @color8;
-@define-color error_fg_color      @color0;
+@define-color warning_color           @color10;
+@define-color warning_bg_color        @color10;
+@define-color warning_fg_color        @background;
 
-/* Success (green) → base0B (color11) */
-@define-color success_color       @color11;
-@define-color success_bg_color    @color11;
-@define-color success_fg_color    @color0;
+@define-color error_color             @color8;
+@define-color error_bg_color          @color8;
+@define-color error_fg_color          @background;
 
-/* Warning (yellow) → base0A (color10) */
-@define-color warning_color       @color10;
-@define-color warning_bg_color    @color10;
-@define-color warning_fg_color    @color0;
+@define-color window_bg_color         @background;
+@define-color window_fg_color         @foreground;
 
-/* Window & view */
-@define-color window_bg_color     @color0;  /* base00 */
-@define-color window_fg_color     @color5;  /* base05 */
-@define-color view_bg_color       @color0;
-@define-color view_fg_color       @color5;
+@define-color view_bg_color           @background;
+@define-color view_fg_color           @foreground;
 
-/* Headerbar & sidebar backgrounds → lighter background (base01/color1) */
-@define-color headerbar_bg_color        @color1;
-@define-color headerbar_fg_color        @color5;
-@define-color sidebar_bg_color          @color1;
-@define-color sidebar_fg_color          @color5;
+@define-color headerbar_bg_color      @background;
+@define-color headerbar_fg_color      @foreground;
+@define-color headerbar_border_color  @color2;
+@define-color headerbar_backdrop_color @window_bg_color;
+@define-color headerbar_shade_color    @color2;
+@define-color headerbar_darker_shade_color @color2;
 
-/* Borders & shading → use “shade_color” (base03/color3) */
-@define-color shade_color               @color3;
-@define-color headerbar_border_color    @color3;
-@define-color headerbar_backdrop_color  @window_bg_color;
-@define-color headerbar_shade_color     @shade_color;
-@define-color headerbar_darker_shade_color @shade_color;
-@define-color sidebar_backdrop_color    @window_bg_color;
-@define-color sidebar_shade_color       @shade_color;
+@define-color sidebar_bg_color        @color1;
+@define-color sidebar_fg_color        @foreground;
+@define-color sidebar_backdrop_color  @window_bg_color;
+@define-color sidebar_shade_color     @color2;
 
-/* Secondary sidebar inherits */
 @define-color secondary_sidebar_bg_color       @sidebar_bg_color;
 @define-color secondary_sidebar_fg_color       @sidebar_fg_color;
 @define-color secondary_sidebar_backdrop_color @sidebar_backdrop_color;
 @define-color secondary_sidebar_shade_color    @sidebar_shade_color;
 
-/* Cards, dialogs, popovers */
-@define-color card_bg_color          @color1;
-@define-color card_fg_color          @color5;
-@define-color card_shade_color       @shade_color;
+@define-color card_bg_color           @background;
+@define-color card_fg_color           @foreground;
+@define-color card_shade_color        @color2;
 
-@define-color dialog_bg_color        @color1;
-@define-color dialog_fg_color        @color5;
+@define-color dialog_bg_color         @background;
+@define-color dialog_fg_color         @foreground;
 
-@define-color popover_bg_color       @color1;
-@define-color popover_fg_color       @color5;
-@define-color popover_shade_color    @shade_color;
+@define-color popover_bg_color        @background;
+@define-color popover_fg_color        @foreground;
+@define-color popover_shade_color     @color2;
 
-/* Scrollbar outline → subtle border (base03/color3) */
-@define-color scrollbar_outline_color @color3;
+@define-color shade_color             @color2;
+@define-color scrollbar_outline_color @color4;
 
-/* Color scales */
-@define-color blue_1   @color13; @define-color blue_2   @color13;
-@define-color blue_3   @color13; @define-color blue_4   @color13;
+@define-color blue_1   @color13;
+@define-color blue_2   @color13;
+@define-color blue_3   @color13;
+@define-color blue_4   @color13;
 @define-color blue_5   @color13;
 
-@define-color green_1  @color11; @define-color green_2  @color11;
-@define-color green_3  @color11; @define-color green_4  @color11;
+@define-color green_1  @color11;
+@define-color green_2  @color11;
+@define-color green_3  @color11;
+@define-color green_4  @color11;
 @define-color green_5  @color11;
 
-@define-color yellow_1 @color10; @define-color yellow_2 @color10;
-@define-color yellow_3 @color10; @define-color yellow_4 @color10;
+@define-color yellow_1 @color10;
+@define-color yellow_2 @color10;
+@define-color yellow_3 @color10;
+@define-color yellow_4 @color10;
 @define-color yellow_5 @color10;
 
-@define-color orange_1 @color9;  @define-color orange_2 @color9;
-@define-color orange_3 @color9;  @define-color orange_4 @color9;
+@define-color orange_1 @color9;
+@define-color orange_2 @color9;
+@define-color orange_3 @color9;
+@define-color orange_4 @color9;
 @define-color orange_5 @color9;
 
-@define-color red_1    @color8;  @define-color red_2    @color8;
-@define-color red_3    @color8;  @define-color red_4    @color8;
+@define-color red_1    @color8;
+@define-color red_2    @color8;
+@define-color red_3    @color8;
+@define-color red_4    @color8;
 @define-color red_5    @color8;
 
-@define-color purple_1 @color14; @define-color purple_2 @color14;
-@define-color purple_3 @color14; @define-color purple_4 @color14;
+@define-color purple_1 @color14;
+@define-color purple_2 @color14;
+@define-color purple_3 @color14;
+@define-color purple_4 @color14;
 @define-color purple_5 @color14;
 
-@define-color brown_1  @color15; @define-color brown_2  @color15;
-@define-color brown_3  @color15; @define-color brown_4  @color15;
+@define-color brown_1  @color15;
+@define-color brown_2  @color15;
+@define-color brown_3  @color15;
+@define-color brown_4  @color15;
 @define-color brown_5  @color15;
 
-/* Light/dark scales */
-@define-color light_1  @color7;  @define-color light_2  @color7;
-@define-color light_3  @color7;  @define-color light_4  @color7;
-@define-color light_5  @color7;
+@define-color light_1  @color1;
+@define-color light_2  @color1;
+@define-color light_3  @color1;
+@define-color light_4  @color1;
+@define-color light_5  @color1;
 
-@define-color dark_1   @color0;  @define-color dark_2   @color0;
-@define-color dark_3   @color0;  @define-color dark_4   @color0;
-@define-color dark_5   @color0;
+@define-color dark_1   @color1;
+@define-color dark_2   @color1;
+@define-color dark_3   @color1;
+@define-color dark_4   @color1;
+@define-color dark_5   @color1;
 

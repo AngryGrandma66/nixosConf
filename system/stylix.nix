@@ -2,7 +2,7 @@
 { config, pkgs, ... }:
 {
     stylix = {
-        enable = true;
+        enable = false;
         fonts = {
             monospace = {
                 package = pkgs.nerd-fonts.jetbrains-mono;
