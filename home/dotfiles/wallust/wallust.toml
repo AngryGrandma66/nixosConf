@@ -43,8 +43,8 @@ check_contrast = true
 # target: ABSOLUTE path in which to place a file with generated templated values.
 # ¡ If either one is a directory, then both SHOULD be one. !
 # zathura = { template = 'zathura', target = '~/.config/zathura/zathurarc' }
-waybar = { src = "waybar-colors.css", dst = "~/.config/wallust/results/waybar-colors.css" }
-css= { src = "colors.css", dst = "~/.config/wallust/results/colors.css" }
-kitty= { src = "kitty-colors.conf", dst = "~/.config/wallust/results/kitty-colors.conf" }
-gtk= { src = "gtk-colors.css", dst = "~/.config/wallust/results/gtk-colors.css" }
-rofi= { src = "rofi-colors.rasi", dst = "~/.config/wallust/results/rofi-colors.rasi" }
+waybar = { src = "waybar-colors.css", dst = "~/.config/colors/waybar-colors.css" }
+css= { src = "colors.css", dst = "~/.config/colors/colors.css" }
+kitty= { src = "kitty-colors.conf", dst = "~/.config/colors/kitty-colors.conf" }
+gtk= { src = "gtk-colors.css", dst = "~/.config/colors/gtk-colors.css" }
+rofi= { src = "rofi-colors.rasi", dst = "~/.config/colors/rofi-colors.rasi" }

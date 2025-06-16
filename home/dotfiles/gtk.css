@@ -1,4 +1,4 @@
-@import url("../wallust/results/gtk-colors.css");
+@import url("../colors/gtk-colors.css");
 
 @define-color accent_color            @color13;
 @define-color accent_bg_color         @color13;

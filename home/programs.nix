@@ -11,7 +11,6 @@
     services.swaync.enable              = true;
     services.udiskie.enable = true;
     fonts.fontconfig.enable = true;
-
     home.packages = with pkgs; [
 # Bluetooth & power
         blueman bluez brightnessctl

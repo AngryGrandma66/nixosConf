@@ -22,7 +22,6 @@
     ./themes.nix
     ./thunar.nix
   ./ldfix.nix
-  ./stylix.nix
   ];
 nix.extraOptions = ''
     experimental-features = nix-command flakes

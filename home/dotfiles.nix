@@ -1,42 +1,41 @@
 { pkgs,config, ... }:
 let 
     OUSL = config.lib.file.mkOutOfStoreSymlink;
+
+  dotfilesPath= "/etc/nixos/home/dotfiles";
+  dotfiles = subpath:
+    OUSL "${dotfilesPath}/${subpath}";
 in
 {
-    home.file.".zshrc".source             =OUSL  ./dotfiles/.zshrc;
-    home.file.".tmux.conf".source         =OUSL  ./dotfiles/.tmux.conf;
-    home.file.".ideavimrc".source         =OUSL  ./dotfiles/.ideavimrc;
-    home.file.".gitconfig".source         =OUSL  ./dotfiles/.gitconfig;
+    home.file.".zshrc".source             =dotfiles ".zshrc";
+    home.file.".tmux.conf".source         =dotfiles ".tmux.conf";
+    home.file.".ideavimrc".source         =dotfiles ".ideavimrc";
+    home.file.".gitconfig".source         =dotfiles ".gitconfig";
     home.file.".config/nvim"= {
-        source = OUSL ./dotfiles/nvim;
+        source = dotfiles "nvim";
         recursive = true;
     };
     home.file.".config/hypr"= {
-        source = OUSL ./dotfiles/hypr;
-        recursive = true;
+        source = dotfiles "hypr";
     };
     home.file.".config/swaync"= {
-        source =OUSL  ./dotfiles/swaync;
-        recursive = true;
+        source =dotfiles "swaync";
     };
     home.file.".config/waybar"= {
-        source =ousl  ./dotfiles/waybar;
-        recursive = true;
+        source =dotfiles "waybar";
     };
     home.file.".config/wallust"= {
-        source =OUSL  ./dotfiles/wallust;
-        recursive = true;
+        source =dotfiles "wallust";
     };
     home.file.".config/kitty"= {
-        source =OUSL  ./dotfiles/kitty;
-        recursive = true;
+        source =dotfiles "kitty";
     };
-    home.file.".config/rofi/config.rasi".source         =OUSL  ./dotfiles/rofi-config.rasi;
+    home.file.".config/rofi/config.rasi".source         =dotfiles "rofi-config.rasi";
 
 
 
-    home.file.".config/gtk-3.0/gtk.css".source         =OUSL  ./dotfiles/gtk.css;
-    home.file.".config/gtk-4.0/custom.css".source         = OUSL ./dotfiles/gtk.css;
+    home.file.".config/gtk-3.0/gtk.css".source         =dotfiles "gtk.css";
+    home.file.".config/gtk-4.0/custom.css".source         = dotfiles "gtk.css";
 
     gtk = {
         enable = true;

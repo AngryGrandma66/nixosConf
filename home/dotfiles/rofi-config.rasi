@@ -1,2 +1,227 @@
-@import "../wallust/results/rofi-colors.rasi"
+@import "../colors/rofi-colors.rasi"
 
+* {
+    /* Base colors mapped from your palette */
+    base00: @background;     /* #0E0E10 - Default background */
+    base01: @color0;         /* #38393B - Alternate background */
+    base02: @color8;         /* #AD9999 - Selection background */
+    base04: @cursor;         /* #CCB2A2 - Alternate text */
+    base05: @foreground;     /* #FFECEB - Default text */
+    base08: @color1;         /* #36934D - Error */
+    base09: @color9;         /* #39BC5B - Urgent */
+    base0A: @color11;        /* #33FFF7 - Warning */
+    
+    /* Additional theme colors */
+    accent: @color3;         /* #26BFB9 - Accent color */
+    highlight: @color6;      /* #68BEBF - Highlight */
+    
+    /* Typography */
+    font: "Inter 12";
+    
+    /* Spacing and sizing */
+    border-radius: 8px;
+    padding: 0px;
+    margin: 0px;
+}
+
+window {
+    transparency: "real";
+    location: center;
+    anchor: center;
+    fullscreen: false;
+    width: 600px;
+    x-offset: 0px;
+    y-offset: 0px;
+    
+    background-color: @base00;
+    border: 2px solid;
+    border-color: @base01;
+    border-radius: 12px;
+    
+}
+
+mainbox {
+    background-color: transparent;
+    children: [ inputbar, listview ];
+    spacing: 0px;
+    padding: 20px;
+}
+
+inputbar {
+    background-color: @base01;
+    text-color: @base05;
+    border: 0px;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 0px 0px 16px 0px;
+    children: [ prompt, textbox-prompt-colon, entry, case-indicator ];
+}
+
+prompt {
+    background-color: transparent;
+    text-color: @accent;
+    font: "Inter Bold 12";
+    margin: 0px 8px 0px 0px;
+}
+
+textbox-prompt-colon {
+    expand: false;
+    str: "";
+    background-color: transparent;
+    text-color: @accent;
+}
+
+entry {
+    background-color: transparent;
+    text-color: @base05;
+    placeholder-color: @base04;
+    placeholder: "Search...";
+    cursor: text;
+}
+
+case-indicator {
+    background-color: transparent;
+    text-color: @base04;
+}
+
+listview {
+    background-color: transparent;
+    columns: 1;
+    lines: 8;
+    cycle: true;
+    dynamic: true;
+    scrollbar: false;
+    layout: vertical;
+    reverse: false;
+    fixed-height: true;
+    fixed-columns: true;
+    spacing: 4px;
+    padding: 0px;
+}
+
+element {
+    background-color: transparent;
+    text-color: @base05;
+    orientation: horizontal;
+    border-radius: 6px;
+    padding: 10px 12px;
+    margin: 0px;
+    cursor: pointer;
+    border: 0px;
+    
+    /* Smooth transitions */
+}
+
+element normal.normal {
+    background-color: transparent;
+    text-color: @base05;
+}
+
+element normal.urgent {
+    text-color: @base09;
+}
+
+element normal.active {
+    text-color: @accent;
+}
+
+element selected.normal {
+    background-color: @base02;
+    text-color: @base05;
+}
+
+element selected.urgent {
+    background-color: @base09;
+    text-color: @base00;
+}
+
+element selected.active {
+    background-color: @accent;
+    text-color: @base00;
+}
+
+element alternate.normal {
+    background-color: transparent;
+    text-color: @base05;
+}
+
+element alternate.urgent {
+    text-color: @base09;
+}
+
+element alternate.active {
+    text-color: @accent;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    cursor: inherit;
+}
+
+element-icon {
+    background-color: transparent;
+    size: 1.2em;
+    cursor: inherit;
+    margin: 0px 8px 0px 0px;
+}
+
+scrollbar {
+    width: 4px;
+    border: 0px;
+    handle-color: @base02;
+    handle-width: 4px;
+    padding: 0px;
+    margin: 0px 4px 0px 0px;
+}
+
+mode-switcher {
+    spacing: 0px;
+    background-color: transparent;
+    margin: 16px 0px 0px 0px;
+}
+
+button {
+    padding: 8px 16px;
+    background-color: @base01;
+    text-color: @base04;
+    border: 0px;
+    border-radius: 6px;
+    margin: 0px 4px 0px 0px;
+    cursor: pointer;
+}
+
+button selected {
+    background-color: @accent;
+    text-color: @base00;
+}
+
+/* Message styling for error/warning states */
+message {
+    border-radius: 6px;
+    padding: 12px;
+    margin: 0px 0px 16px 0px;
+}
+
+textbox {
+    background-color: transparent;
+    text-color: @base0A;
+    font: "Inter Medium 11";
+}
+
+/* Custom styling for different rofi modes */
+#window.drun {
+    width: 700px;
+}
+
+#window.run {
+    width: 500px;
+}
+
+#window.ssh {
+    width: 600px;
+}
+
+#window.combi {
+    width: 750px;
+}
