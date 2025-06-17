@@ -18,9 +18,9 @@ in
     home.file.".config/hypr"= {
         source = dotfiles "hypr";
     };
-    home.file.".config/swaync"= {
-        source =dotfiles "swaync";
-    };
+   # home.file.".config/swaync"= {
+   #     source =dotfiles "swaync";
+   # };
     home.file.".config/waybar"= {
         source =dotfiles "waybar";
     };

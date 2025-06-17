@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 {
     virtualisation.podman.enable        = true;
+    virtualisation.waydroid.enable        = true;
     programs.virt-manager.enable = true;
     virtualisation.libvirtd = {
         enable = true;
