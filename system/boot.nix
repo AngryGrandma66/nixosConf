@@ -1,10 +1,14 @@
 { config, pkgs, ... }:
 {
-    boot.loader.grub.enable                = true;
-    boot.loader.grub.efiSupport            = true;
-    boot.loader.grub.efiInstallAsRemovable = true;
-    boot.loader.grub.device                = "/dev/nvme0n1";
+    boot.loader.grub = { 
+        enable = true;
+        efiSupport = true;
+        efiInstallAsRemovable = true;
+        device = "/dev/nvme0n1";
+        timeoutStyle = "hidden";
+        };
     hardware.cpu.intel.updateMicrocode     = true;
+
 
     boot.kernelParams = [
         "button.lid_init_state=open"

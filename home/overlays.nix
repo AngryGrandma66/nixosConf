@@ -1,10 +1,11 @@
-{ config, pkgs,lib, ... }:
+{ system,config, pkgs,lib,pkgs-2505, ... }:
 let
+
   zlibrary = import ../overlays/z-library-2.4.2 { inherit pkgs; };
 in
 {
 
-  home.packages = with pkgs; [
+  home.packages = with pkgs-2505; [
     (buildFHSEnv{
       name       = "z-library-fhs";
       targetPkgs = _: [ zlibrary ];

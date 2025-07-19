@@ -1,5 +1,7 @@
 { pkgs,lib, ... }:
 {
+    services.kdeconnect.enable = true;
+
     programs.zsh.enable = true;
     programs.zsh.oh-my-zsh = {
         enable  = true;
