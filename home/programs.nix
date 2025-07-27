@@ -2,7 +2,6 @@
 {
     services.kdeconnect.enable = true;
 
-    programs.zsh.enable = true;
     programs.zsh.oh-my-zsh = {
         enable  = true;
         theme   = "robbyrussell";
@@ -30,9 +29,9 @@
             firefox neovim kitty
 
 # JetBrains IDEs 
-            pkgs.jetbrains.idea-ultimate
-            pkgs.jetbrains.webstorm
-            pkgs.jetbrains.phpstorm
+#            pkgs.jetbrains.idea-ultimate
+ #           pkgs.jetbrains.webstorm
+ #           pkgs.jetbrains.phpstorm
 
 
 # Printer GUI (if CUPS GUI needed)
@@ -70,7 +69,7 @@
 #nerd Font
             nerd-fonts.jetbrains-mono
 
-
+quickshell
             wallust
             ];
 }

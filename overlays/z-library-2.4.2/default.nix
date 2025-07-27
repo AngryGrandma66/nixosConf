@@ -28,7 +28,7 @@ pkgs.stdenv.mkDerivation rec {
   ##
   deb = pkgs.fetchurl {
     url = "https://s3proxy.cdn-zlib.sk/te_public_files/soft/linux/zlibrary-setup-latest.deb";
-    sha256 = "1lw75lyf4la86ck63r0hwx92vnmcfk6p78a3xxxdp9jwhcngph6j";
+    sha256 = "1dic1r5pmvgihiffksq4jkzjs6ffrd36ly1dz156q02lsljhcb1v";
     #   ↑ replace with the Base-32 sha256 from `nix-prefetch-url`
   };
 

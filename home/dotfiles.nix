@@ -32,6 +32,9 @@ in
     };
     home.file.".config/rofi/config.rasi".source         =dotfiles "rofi-config.rasi";
 
+    home.file.".config/quickshell"= {
+        source =dotfiles "quickshell";
+    };
 
 
     home.file.".config/gtk-3.0/gtk.css".source         =dotfiles "gtk.css";

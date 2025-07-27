@@ -14,7 +14,7 @@
         };
     };
 
-    outputs = { self, nixpkgs, home-manager,nixpkgs-2505, ... }:
+    outputs = { self, nixpkgs, home-manager,nixpkgs-2505,nur, ... }:
         let
         system = "x86_64-linux";
     pkgs   = import nixpkgs { inherit system; config = { allowUnfree = true; }; };
@@ -23,12 +23,14 @@
         nixosConfigurations.martin = nixpkgs.lib.nixosSystem {
             inherit system;
             modules = [ ./system/configuration.nix
+                    nur.modules.nixos.default
                 home-manager.nixosModules.home-manager{
                     home-manager.useGlobalPkgs = true;
                     home-manager.useUserPackages = true; 
                     home-manager.backupFileExtension = "backup";
                     home-manager.users.martin = import ./home/home.nix;
                     home-manager.extraSpecialArgs = {
+
                 inherit pkgs-2505;
             };
                 }
