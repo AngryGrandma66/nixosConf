@@ -1,26 +1,34 @@
 import Quickshell
 import QtQuick 
-import Clock
 Scope {
 
-    Variants {
-        model: Quickshell.screens
+  Variants {
+    model: Quickshell.screens
 
-        PanelWindow {
-            required property var modelData
-            screen: modelData
+    PanelWindow {
+      required property var modelData
+      screen: modelData
 
-            anchors {
-                top: true
-                left: true
-                right: true
-            }
+      anchors {
+        top: true
+        left: true
+        right: true
+      }
 
-            implicitHeight: 30
+      implicitHeight: 25
+      Rectangle {
+          id: left
+      }
+      Rectangle {
+          id:center 
+      }
+      Rectangle {
+          id:right 
+      }
+      ClockWidget {
+        anchors.centerIn: parent
 
-            Clock {
-                    anchors.centerIn: parent
-            }
-        }
+      }
     }
+  }
 }
