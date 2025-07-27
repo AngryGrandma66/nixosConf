@@ -1,5 +1,6 @@
 import Quickshell
 import QtQuick 
+import Clock
 Scope {
 
     Variants {
@@ -17,9 +18,8 @@ Scope {
 
             implicitHeight: 30
 
-            Text {
+            Clock {
                     anchors.centerIn: parent
-                text: Clock.time
             }
         }
     }
