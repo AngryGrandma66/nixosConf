@@ -4,7 +4,7 @@ Text {
     id: clock
     text:  Qt.formatDateTime(Time.time, "hh:mm") 
     property bool date: false
-    MouseArea {
+    MouseArea {  
         anchors.fill: parent
         onClicked: {
            clock.text = clock.date ? Qt.formatDateTime(Time.time, "hh:mm") :   Qt.formatDateTime(Time.time, "ddd MMM d hh:mm")
