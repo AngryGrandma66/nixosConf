@@ -1,7 +1,7 @@
 { pkgs,lib, ... }:
 {
     services.kdeconnect.enable = true;
-
+programs.quickshell.enable = true;
     programs.zsh.oh-my-zsh = {
         enable  = true;
         theme   = "robbyrussell";
@@ -29,10 +29,10 @@
             firefox neovim kitty
 
 # JetBrains IDEs 
-#            pkgs.jetbrains.idea-ultimate
- #           pkgs.jetbrains.webstorm
- #           pkgs.jetbrains.phpstorm
-
+            pkgs.jetbrains.idea-ultimate
+            pkgs.jetbrains.webstorm
+            pkgs.jetbrains.phpstorm
+            pkgs.jetbrains.pycharm-professional
 
 # Printer GUI (if CUPS GUI needed)
             system-config-printer
@@ -69,7 +69,13 @@
 #nerd Font
             nerd-fonts.jetbrains-mono
 
-quickshell
             wallust
+            tlp
+
+
+wineWowPackages.wayland
+winetricks
+wineWowPackages.fonts
+yazi
             ];
 }

@@ -1,15 +1,16 @@
 import Quickshell
 import QtQuick 
 import QtQuick.Layouts
+import QtQuick.Controls
 Scope {
 
     Variants {
         model: Quickshell.screens
 
         PanelWindow {
+              id: topBar
             required property var modelData
             screen: modelData
-
             anchors {
                 top: true
                 left: true
@@ -35,17 +36,14 @@ Scope {
                 RowLayout {
                     id:centerBlocks 
                     spacing: 10
-                    Layout.alignment: Qt.AlignVCenter
+                    Layout.alignment: Qt.AlignCenter
                     Layout.fillWidth: true
-        anchors.centerIn: parent
-                    ClockWidget{}
+                    Workspaces{}
+
+
+
                 }
 
-                // Without this filler item, the active window block will be centered
-                // despite setting left alignment
-                Item {
-                    Layout.fillWidth: true
-                }
 
                 // Right side
                 RowLayout {

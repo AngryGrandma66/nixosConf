@@ -1,10 +1,10 @@
 { pkgs,config, ... }:
 let 
-    OUSL = config.lib.file.mkOutOfStoreSymlink;
+OUSL = config.lib.file.mkOutOfStoreSymlink;
 
-  dotfilesPath= "/etc/nixos/home/dotfiles";
-  dotfiles = subpath:
-    OUSL "${dotfilesPath}/${subpath}";
+dotfilesPath= "/etc/nixos/home/dotfiles";
+dotfiles = subpath:
+OUSL "${dotfilesPath}/${subpath}";
 in
 {
     home.file.".zshrc".source             =dotfiles ".zshrc";
@@ -18,9 +18,9 @@ in
     home.file.".config/hypr"= {
         source = dotfiles "hypr";
     };
-   # home.file.".config/swaync"= {
-   #     source =dotfiles "swaync";
-   # };
+# home.file.".config/swaync"= {
+#     source =dotfiles "swaync";
+# };
     home.file.".config/waybar"= {
         source =dotfiles "waybar";
     };
@@ -52,4 +52,27 @@ in
             @import url("file://${builtins.toString config.home.homeDirectory}/.config/gtk-4.0/custom.css");
         '';
     };
+    qt = {
+        enable = true;
+
+        style = {
+            name = "adwaita";           
+                package = pkgs.adwaita-qt;
+        };
+
+        platformTheme.name = "qtct";
+    };
+
+    xdg.configFile."qt5ct/qt5ct.conf".text = ''
+        [Appearance]
+        style=adwaita
+            icon_theme=BeautyLine
+            '';
+
+    xdg.configFile."qt6ct/qt6ct.conf".text = ''
+        [Appearance]
+        style=adwaita
+            icon_theme=BeautyLine
+            '';
+
 }

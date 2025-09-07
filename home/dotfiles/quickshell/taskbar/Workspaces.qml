@@ -1,282 +1,334 @@
-import qs
-import qs.services
-import qs.modules.common
-import qs.modules.common.widgets
-import qs.modules.common.functions
+// Works
 import QtQuick
-import QtQuick.Controls
-import QtQuick.Layouts
 import Quickshell
-import Quickshell.Wayland
 import Quickshell.Hyprland
+import Quickshell.Io
 import Quickshell.Widgets
-import Qt5Compat.GraphicalEffects
 
-Item {
-    required property var bar
-    property bool borderless: Config.options.bar.borderless
-    readonly property HyprlandMonitor monitor: Hyprland.monitorFor(bar.screen)
-    readonly property Toplevel activeWindow: ToplevelManager.activeToplevel
-    
-    readonly property int workspaceGroup: Math.floor((monitor.activeWorkspace?.id - 1) / Config.options.bar.workspaces.shown)
-    property list<bool> workspaceOccupied: []
-    property int widgetPadding: 4
-    property int workspaceButtonWidth: 26
-    property real workspaceIconSize: workspaceButtonWidth * 0.69
-    property real workspaceIconSizeShrinked: workspaceButtonWidth * 0.55
-    property real workspaceIconOpacityShrinked: 1
-    property real workspaceIconMarginShrinked: -4
-    property int workspaceIndexInGroup: (monitor.activeWorkspace?.id - 1) % Config.options.bar.workspaces.shown
 
-    // Function to update workspaceOccupied
-    function updateWorkspaceOccupied() {
-        workspaceOccupied = Array.from({ length: Config.options.bar.workspaces.shown }, (_, i) => {
-            return Hyprland.workspaces.values.some(ws => ws.id === workspaceGroup * Config.options.bar.workspaces.shown + i + 1);
+Row {
+    id: workspacesRow
+    spacing: 5
+    property int resolutionWidth : 1920
+    property int resolutionHeight: 1200
+    // State variables
+    property var windowList: []
+
+    // Update window list from Hyprland clients
+    function updateWindowList() {
+        getClients.running = true
+    }
+
+    // Return biggest window (by pixel area) for a given workspace ID
+    // Return the 4 biggest windows (by pixel area) for a given workspace ID
+    function biggestWindowsForWorkspace(workspaceId) {
+
+        return windowsForWorkspace(workspaceId)
+        .slice(0, 4); // take the top 4
+    }
+    function windowsForWorkspace(workspaceId) {
+        const windows = windowList.filter(w => w.workspace.id === workspaceId);
+
+        return windows
+        .sort((a, b) => {
+            const areaA = (a?.size?.[0] ?? 0) * (a?.size?.[1] ?? 0);
+            const areaB = (b?.size?.[0] ?? 0) * (b?.size?.[1] ?? 0);
+            return areaB - areaA; // sort descending
         })
     }
 
-    // Initialize workspaceOccupied when the component is created
-    Component.onCompleted: updateWorkspaceOccupied()
+    // Guess icon based on class name
+    function iconExists(iconName) {
+        if (!iconName || iconName.length === 0) return false
+        const result = Quickshell.iconPath(iconName, true)
+        return result.length > 0 && !result.includes("image-missing")
+    }
 
-    // Listen for changes in Hyprland.workspaces.values
+    function guessIcon(className) {
+        if (!className || className.length === 0) return "image-missing"
+
+        if(iconExists(className)) return className
+
+        const lower = className.toLowerCase()
+        if (iconExists(lower)) return lower
+
+        const kebab = lower.replace(/\s+/g, "-")
+        if (iconExists(kebab)) return kebab
+
+        const domain = className.split('.').slice(-1)[0]
+        if (iconExists(domain)) return domain
+
+        console.log(`⚠️ [guessIcon] No icon found for '${className}', using fallback.`)
+        return "application-x-executable"
+    }
+    //update all popup positons on change
+    /*    function updatePopups(){
+         for (let p of allPopups) {
+             p.visible = !p.visible
+             p.visible = !p.visible
+         }
+     }
+     onWidthChanged: updatePopups()
+     */
+    property var urgentWindowAddresses: []
+    // Auto-refresh on Hyprland events
     Connections {
-        target: Hyprland.workspaces
-        function onValuesChanged() {
-            updateWorkspaceOccupied();
-        }
-    }
-
-    implicitWidth: rowLayout.implicitWidth + rowLayout.spacing * 2
-    implicitHeight: Appearance.sizes.barHeight
-
-    // Scroll to switch workspaces
-    WheelHandler {
-        onWheel: (event) => {
-            if (event.angleDelta.y < 0)
-                Hyprland.dispatch(`workspace r+1`);
-            else if (event.angleDelta.y > 0)
-                Hyprland.dispatch(`workspace r-1`);
-        }
-        acceptedDevices: PointerDevice.Mouse | PointerDevice.TouchPad
-    }
-
-    MouseArea {
-        anchors.fill: parent
-        acceptedButtons: Qt.BackButton
-        onPressed: (event) => {
-            if (event.button === Qt.BackButton) {
-                Hyprland.dispatch(`togglespecialworkspace`);
-            } 
-        }
-    }
-
-    // Workspaces - background
-    RowLayout {
-        id: rowLayout
-        z: 1
-
-        spacing: 0
-        anchors.fill: parent
-        implicitHeight: Appearance.sizes.barHeight
-
-        Repeater {
-            model: Config.options.bar.workspaces.shown
-
-            Rectangle {
-                z: 1
-                implicitWidth: workspaceButtonWidth
-                implicitHeight: workspaceButtonWidth
-                radius: Appearance.rounding.full
-                property var leftOccupied: (workspaceOccupied[index-1] && !(!activeWindow?.activated && monitor.activeWorkspace?.id === index))
-                property var rightOccupied: (workspaceOccupied[index+1] && !(!activeWindow?.activated && monitor.activeWorkspace?.id === index+2))
-                property var radiusLeft: leftOccupied ? 0 : Appearance.rounding.full
-                property var radiusRight: rightOccupied ? 0 : Appearance.rounding.full
-
-                topLeftRadius: radiusLeft
-                bottomLeftRadius: radiusLeft
-                topRightRadius: radiusRight
-                bottomRightRadius: radiusRight
-                
-                color: ColorUtils.transparentize(Appearance.m3colors.m3secondaryContainer, 0.4)
-                opacity: (workspaceOccupied[index] && !(!activeWindow?.activated && monitor.activeWorkspace?.id === index+1)) ? 1 : 0
-
-                Behavior on opacity {
-                    animation: Appearance.animation.elementMove.numberAnimation.createObject(this)
-                }
-                Behavior on radiusLeft {
-                    animation: Appearance.animation.elementMove.numberAnimation.createObject(this)
-                }
-
-                Behavior on radiusRight {
-                    animation: Appearance.animation.elementMove.numberAnimation.createObject(this)
-                }
+        target: Hyprland
+        function onRawEvent(ev) {
+            updateWindowList()
+            if (ev.name ==="urgent"){
+                console.log(ev.data)
+                urgentWindowAddresses.push(ev.data)
 
             }
-
         }
-
     }
+    Component.onCompleted:{ 
+        updateWindowList()
+    }
+    // This Repeater keeps only urgent windows
 
-    // Active workspace
-    Rectangle {
-        z: 2
-        // Make active ws indicator, which has a brighter color, smaller to look like it is of the same size as ws occupied highlight
-        property real activeWorkspaceMargin: 2
-        implicitHeight: workspaceButtonWidth - activeWorkspaceMargin * 2
-        radius: Appearance.rounding.full
-        color: Appearance.colors.colPrimary
-        anchors.verticalCenter: parent.verticalCenter
+    Process {
+        id: getClients
+        command: ["bash", "-c", "hyprctl clients -j"]
+        stdout: StdioCollector {
+            onStreamFinished: {
+                workspacesRow.windowList = JSON.parse(text)
 
-        property real idx1: workspaceIndexInGroup
-        property real idx2: workspaceIndexInGroup
-        x: Math.min(idx1, idx2) * workspaceButtonWidth + activeWorkspaceMargin
-        implicitWidth: Math.abs(idx1 - idx2) * workspaceButtonWidth + workspaceButtonWidth - activeWorkspaceMargin * 2
-
-        Behavior on activeWorkspaceMargin {
-            animation: Appearance.animation.elementMoveFast.numberAnimation.createObject(this)
-        }
-        Behavior on idx1 { // Leading anim
-            NumberAnimation {
-                duration: 100
-                easing.type: Easing.OutSine
-            }
-        }
-        Behavior on idx2 { // Following anim
-            NumberAnimation {
-                duration: 300
-                easing.type: Easing.OutSine
             }
         }
     }
+    // Returns true if ANY window in the workspace is urgent
+    function normalizeWindowAddress(addr) {
+        if (typeof addr === "string" && addr.startsWith("0x")) {
+            return addr.slice(2)
+        }
+        return addr
+    }
 
-    // Workspaces - numbers
-    RowLayout {
-        id: rowLayoutNumbers
-        z: 3
+    // Returns true if any window in workspace is urgent
+    function isWorkspaceUrgent(workspaceId) {
+        return windowsForWorkspace(workspaceId).some(window =>
+        urgentWindowAddresses.includes(normalizeWindowAddress(window.address)))
+    }
 
-        spacing: 0
-        anchors.fill: parent
-        implicitHeight: Appearance.sizes.barHeight
+    // Returns all urgent windows for a workspace
+    function getUrgentWindowsForWorkspace(workspaceId) {
+        return windowsForWorkspace(workspaceId)
+        .map(w => normalizeWindowAddress(w.address))
+        .filter(addr => urgentWindowAddresses.includes(addr))
+    }
 
-        Repeater {
-            model: Config.options.bar.workspaces.shown
+    // Returns true if this specific window is urgent
+    function isWindowUrgent(windowAddress) {
+        return urgentWindowAddresses.includes(normalizeWindowAddress(windowAddress))
+    }
+    property var allPopups: []
 
-            Button {
-                id: button
-                property int workspaceValue: workspaceGroup * Config.options.bar.workspaces.shown + index + 1
-                Layout.fillHeight: true
-                onPressed: Hyprland.dispatch(`workspace ${workspaceValue}`)
-                width: workspaceButtonWidth
-                
-                background: Item {
-                    id: workspaceButtonBackground
-                    implicitWidth: workspaceButtonWidth
-                    implicitHeight: workspaceButtonWidth
-                    property var biggestWindow: HyprlandData.biggestWindowForWorkspace(button.workspaceValue)
-                    property var mainAppIconSource: Quickshell.iconPath(AppSearch.guessIcon(biggestWindow?.class), "image-missing")
+    function showPopupFor(targetPopup) {
+        for (let p of allPopups) {
+            p.visible = (p === targetPopup)
+        }
+    }
+    function clearUrgentForWorkspace(workspaceId) {
+        const urgentWindows = getUrgentWindowsForWorkspace(workspaceId);
 
-                    StyledText { // Workspace number text
-                        opacity: GlobalStates.workspaceShowNumbers
-                            || ((Config.options?.bar.workspaces.alwaysShowNumbers && (!Config.options?.bar.workspaces.showAppIcons || !workspaceButtonBackground.biggestWindow || GlobalStates.workspaceShowNumbers))
-                            || (GlobalStates.workspaceShowNumbers && !Config.options?.bar.workspaces.showAppIcons)
-                            )  ? 1 : 0
-                        z: 3
+        // Remove each urgent window of this workspace from the main list
+        urgentWindowAddresses = urgentWindowAddresses.filter(
+            addr => !urgentWindows.includes(addr)
+        );
+    }
 
-                        anchors.centerIn: parent
-                        horizontalAlignment: Text.AlignHCenter
-                        verticalAlignment: Text.AlignVCenter
-                        font.pixelSize: Appearance.font.pixelSize.small - ((text.length - 1) * (text !== "10") * 2)
-                        text: `${button.workspaceValue}`
-                        elide: Text.ElideRight
-                        color: (monitor.activeWorkspace?.id == button.workspaceValue) ? 
-                            Appearance.m3colors.m3onPrimary : 
-                            (workspaceOccupied[index] ? Appearance.m3colors.m3onSecondaryContainer : 
-                                Appearance.colors.colOnLayer1Inactive)
+    // Workspaces display
+    Repeater {
+        id: workspaceRepeater
+        model:Hyprland.workspaces 
+        Rectangle {
+            // Base icon size and spacing
+            id: workspaceButton
+            property int iconSize:20
+            property int iconSpacing: 5
+            property int popupHeaderHeight: 25
+            property int popupWidth: 500
+            property int popupHeight: (popupWidth * (resolutionHeight/resolutionWidth)) + popupHeaderHeight
+            property var topWindows: biggestWindowsForWorkspace(modelData.id)
+            property var workspaceUrgencyStatus 
+            // Dynamic width based on number of windows + space for number
+            width: (topWindows.length + 1) * (iconSize + iconSpacing)
+            height: 25
+            radius: 10
+            color: modelData.active ? "#4a9eff" : (isWorkspaceUrgent(modelData.id) ? "#ff5555" : "#333333")
+            border.color: "#555555"
+            border.width: 1
 
-                        Behavior on opacity {
-                            animation: Appearance.animation.elementMoveFast.numberAnimation.createObject(this)
-                        }
+            onColorChanged: {
+                if(modelData.active){ 
+                    clearUrgentForWorkspace(modelData.id)
+                }
+            }
+            MouseArea {
+                anchors.fill: parent
+                hoverEnabled: true
+
+                onEntered: showPopupFor(workspacePopup)
+                onExited: workspacePopup.visible = false
+
+                onClicked: {
+                    Hyprland.dispatch("workspace " + modelData.id)
+                }
+            }            // Row with workspace number + icons
+            Row {
+                anchors.left: parent.left
+                anchors.leftMargin: 5
+                anchors.verticalCenter: parent.verticalCenter
+                spacing: iconSpacing
+                // Workspace number
+                Text {
+                    text: modelData.id
+                    color: modelData.active ? "#ffffff" : "#cccccc"
+                    font.pixelSize: 12
+                    anchors.verticalCenter: parent.verticalCenter  // center vertically
+                }
+
+                PopupWindow {
+                    id: workspacePopup
+                    property var windowsForThisPopup: windowsForWorkspace(modelData.id)
+                    property real scaleX: popupWidth/ resolutionWidth
+                    property real scaleY: (popupHeight-popupHeaderHeight)/ resolutionHeight
+
+                    anchor.window: topBar
+                    anchor.rect.x: workspacesRow.parent.x+  workspaceButton.x + workspaceButton.width / 2 -popupWidth/2
+                    anchor.rect.y: parentWindow.height
+                    implicitWidth: popupWidth
+                    implicitHeight: popupHeight
+                    visible: false
+                    Component.onCompleted: {
+                        allPopups.push(this)
                     }
-                    Rectangle { // Dot instead of ws number
-                        id: wsDot
-                        opacity: (Config.options?.bar.workspaces.alwaysShowNumbers
-                            || GlobalStates.workspaceShowNumbers
-                            || (Config.options?.bar.workspaces.showAppIcons && workspaceButtonBackground.biggestWindow)
-                            ) ? 0 : 1
-                        visible: opacity > 0
-                        anchors.centerIn: parent
-                        width: workspaceButtonWidth * 0.18
-                        height: width
-                        radius: width / 2
-                        color: (monitor.activeWorkspace?.id == button.workspaceValue) ? 
-                            Appearance.m3colors.m3onPrimary : 
-                            (workspaceOccupied[index] ? Appearance.m3colors.m3onSecondaryContainer : 
-                                Appearance.colors.colOnLayer1Inactive)
-
-                        Behavior on opacity {
-                            animation: Appearance.animation.elementMoveFast.numberAnimation.createObject(this)
-                        }
+                    Component.onDestruction: {
+                        allPopups.splice(allPopups.indexOf(this), 1)
                     }
-                    Item { // Main app icon
-                        anchors.centerIn: parent
-                        width: workspaceButtonWidth
-                        height: workspaceButtonWidth
-                        opacity: !Config.options?.bar.workspaces.showAppIcons ? 0 :
-                            (workspaceButtonBackground.biggestWindow && !GlobalStates.workspaceShowNumbers && Config.options?.bar.workspaces.showAppIcons) ? 
-                            1 : workspaceButtonBackground.biggestWindow ? workspaceIconOpacityShrinked : 0
-                            visible: opacity > 0
-                        IconImage {
-                            id: mainAppIcon
-                            anchors.bottom: parent.bottom
-                            anchors.right: parent.right
-                            anchors.bottomMargin: (!GlobalStates.workspaceShowNumbers && Config.options?.bar.workspaces.showAppIcons) ? 
-                                (workspaceButtonWidth - workspaceIconSize) / 2 : workspaceIconMarginShrinked
-                            anchors.rightMargin: (!GlobalStates.workspaceShowNumbers && Config.options?.bar.workspaces.showAppIcons) ? 
-                                (workspaceButtonWidth - workspaceIconSize) / 2 : workspaceIconMarginShrinked
+                    onVisibleChanged: if (visible) anchor.updateAnchor()
 
-                            source: workspaceButtonBackground.mainAppIconSource
-                            implicitSize: (!GlobalStates.workspaceShowNumbers && Config.options?.bar.workspaces.showAppIcons) ? workspaceIconSize : workspaceIconSizeShrinked
 
-                            Behavior on opacity {
-                                animation: Appearance.animation.elementMoveFast.numberAnimation.createObject(this)
-                            }
-                            Behavior on anchors.bottomMargin {
-                                animation: Appearance.animation.elementMoveFast.numberAnimation.createObject(this)
-                            }
-                            Behavior on anchors.rightMargin {
-                                animation: Appearance.animation.elementMoveFast.numberAnimation.createObject(this)
-                            }
-                            Behavior on implicitSize {
-                                animation: Appearance.animation.elementMoveFast.numberAnimation.createObject(this)
+                    Column {
+                        anchors.fill: parent
+                        spacing: 0
+
+                        // header
+
+                        Rectangle {
+                            width: parent.width
+                            height: popupHeaderHeight
+
+                            color: "#222222"
+                            Text {
+                                anchors.centerIn: parent
+                                text: "Workspace: " + modelData.id
+                                font.pixelSize: 14
+                                color: "#ffffff"
                             }
                         }
+                        // windows layout container
+                        Item {
+                            id: windowsContainer
+                            width: parent.width
+                            y : popupHeaderHeight 
 
-                        Loader {
-                            active: Config.options.bar.workspaces.monochromeIcons
-                            anchors.fill: mainAppIcon
-                            sourceComponent: Item {
-                                Desaturate {
-                                    id: desaturatedIcon
-                                    visible: false // There's already color overlay
-                                    anchors.fill: parent
-                                    source: mainAppIcon
-                                    desaturation: 0.8
-                                }
-                                ColorOverlay {
-                                    anchors.fill: desaturatedIcon
-                                    source: desaturatedIcon
-                                    color: ColorUtils.transparentize(wsDot.color, 0.9)
+                            Repeater {
+                                model: workspacePopup.windowsForThisPopup
+                                Rectangle {
+                                    color: modelData.focusHistoryID === 0 ? "#4a9eff" : (isWindowUrgent(modelData.address) ? "#ff5555" : "#333333")
+                                    border.color: "#222222"
+                                    border.width: 1
+                                    radius: 3
+
+                                    x: modelData.at[0] * workspacePopup.scaleX
+                                    y: modelData.at[1] * workspacePopup.scaleY
+                                    width: modelData.size[0] * workspacePopup.scaleX
+                                    height: modelData.size[1] * workspacePopup.scaleY
+
+                                    Column {
+                                        id: content
+                                        anchors.centerIn: parent
+                                        spacing: 6
+                                        width: parent.width * 0.9
+                                        height: parent.height * 0.9
+
+                                        // App icon
+                                        Image {
+                                            id: icon
+                                            source: Quickshell.iconPath(
+                                                guessIcon(modelData?.appID || modelData?.initialClass || modelData?.class),
+                                                "image-missing"
+                                            )
+                                            anchors.horizontalCenter: parent.horizontalCenter
+                                            fillMode: Image.PreserveAspectFit
+
+                                            width: Math.min(content.width, content.height) * 0.5
+                                            height: width
+                                        }
+
+                                        // Window title that adapts font size
+                                        Text {
+                                            id: titleText
+                                            text: modelData.title || "Untitled"
+                                            color: "#ffffff"
+                                            wrapMode: Text.WordWrap
+                                            horizontalAlignment: Text.AlignHCenter
+                                            width: content.width
+
+                                            // Start with large size
+                                            font.pixelSize: Math.min(content.height * 0.2, 24)
+
+                                            // Shrink dynamically if text overflows height
+                                            Component.onCompleted: adjustFontSize()
+                                            onTextChanged: adjustFontSize()
+                                            onWidthChanged: adjustFontSize()
+
+                                            function adjustFontSize() {
+                                                var maxHeight = content.height * 0.5   // reserve half for text
+                                                while (implicitHeight > maxHeight && font.pixelSize > 8) {
+                                                    font.pixelSize -= 1
+                                                }
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
                     }
                 }
-                
+                // Icons
+                Repeater {
+                    model: topWindows
 
+                    ShaderEffectSource {
+                        id: svgSource
+                        sourceItem: Image {
+                            source: Quickshell.iconPath(
+                                guessIcon(modelData?.appID || modelData?.initialClass || modelData?.class)
+                                , "image-missing"
+                            )
+                            width: 32
+                            height: 32
+                        }
+                        width: iconSize
+                        height: iconSize
+                        live: true
+                        smooth: true
+                    }
+                }
             }
-
         }
-
     }
 
+    // Fallback message
+    Text {
+        visible: Hyprland.workspaces.length === 0
+        text: "No workspaces"
+        color: "#ffffff"
+        font.pixelSize: 12
+    }
 }
+

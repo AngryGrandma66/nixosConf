@@ -30,7 +30,7 @@
             "paused": "⏸",
             "stopped": ""
         },
-        "dynamic-order": ["title", "artist"],
+        "dynamic-order": ["title", "artist"]
     },
     "idle_inhibitor": {
         "format": "{icon}",
@@ -86,7 +86,7 @@
         "sort-by": "id"
     },
     "hyprland/language": {
-        "format": "{short}",
+        "format": "{short}"
     },
 
 
@@ -107,7 +107,7 @@
         "format": "{icon} {volume}%",
         "format-bluetooth": "{volume}% {icon} ",
         "format-bluetooth-muted": "  {icon} ",
-        "format-muted": " ",
+        "format-muted": "",
         "format-icons": {
             "headphone": "",
             "hands-free": "",

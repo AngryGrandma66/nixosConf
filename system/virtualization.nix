@@ -5,6 +5,7 @@
 #  environment.systemPackages = with pkgs; [
 #  nur.repos.ataraxiasjel.waydroid-script
 #    ];
+    programs.virt-manager.enable = true;
     virtualisation.libvirtd = {
         enable = true;
         qemu = {
