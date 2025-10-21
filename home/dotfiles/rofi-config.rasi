@@ -1,7 +1,11 @@
 @import "../colors/rofi-colors.rasi"
 configuration {
     show-icons: true;
+terminal:"kitty";
 }
+
+
+
 * {
     /* Base colors mapped from your palette */
 base00: @background;     /* #0E0E10 - Default background */

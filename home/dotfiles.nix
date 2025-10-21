@@ -57,7 +57,7 @@ in
 
         style = {
             name = "adwaita";           
-                package = pkgs.adwaita-qt;
+            package = pkgs.adwaita-qt;
         };
 
         platformTheme.name = "qtct";

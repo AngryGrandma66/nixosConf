@@ -1,17 +1,34 @@
-{ pkgs,lib, ... }:
+{ pkgs, lib, ... }:
 {
     services.kdeconnect.enable = true;
-programs.quickshell.enable = true;
+    programs.quickshell.enable = true;
+
+
+
+    home.sessionVariables = {
+        TERMINAL = "kitty";
+    };
+
+    xdg.mimeApps.defaultApplications = {
+        "x-scheme-handler/terminal" = [ "kitty.desktop" ];
+    };
+
+
+
+
+
     programs.zsh.oh-my-zsh = {
         enable  = true;
         theme   = "robbyrussell";
         plugins = [ "git" "fzf" "docker" "gitflow" ];
     };
 
-    services.gpg-agent.enable           = true;
-    services.swaync.enable              = true;
-    services.udiskie.enable = true;
+    services.gpg-agent.enable = true;
+    services.swaync.enable    = true;
+    services.udiskie.enable   = true;
+
     fonts.fontconfig.enable = true;
+
     home.packages = with pkgs; [
 # Bluetooth & power
         blueman bluez brightnessctl
@@ -19,7 +36,7 @@ programs.quickshell.enable = true;
 # Monitoring & info
             btop htop fastfetch gnome-system-monitor powertop
 
-# Graphics 
+# Graphics
             eog gimp 
 
 # CLI utilities
@@ -28,54 +45,64 @@ programs.quickshell.enable = true;
 # Browsers & editors
             firefox neovim kitty
 
-# JetBrains IDEs 
-            pkgs.jetbrains.idea-ultimate
-            pkgs.jetbrains.webstorm
-            pkgs.jetbrains.phpstorm
-            pkgs.jetbrains.pycharm-professional
+# JetBrains IDEs (patched automatically)
+            jetbrains.idea-ultimate
+            jetbrains.webstorm
+            jetbrains.phpstorm
+            jetbrains.pycharm-professional
+            jetbrains.clion
 
-# Printer GUI (if CUPS GUI needed)
+# Printer GUI
             system-config-printer
 
-
-#vesktop
+# vesktop
             vesktop
-#waybar
+
+# waybar
             waybar
 
-
-#printer icons
+# printer icons
             kdePackages.print-manager
 
-#rofi
+# rofi
             rofi-wayland
-#obsidian
+
+# obsidian
             obsidian
-#hyprpaper
-            hyprpaper
-#hypridle
-            hypridle
-#hyprshot
-            hyprshot
-#nm applet
+
+# hyprland tools
+            hyprpaper hypridle hyprshot
+
+# nm applet
             networkmanagerapplet
 
-#mpris for waybaraudio
+# mpris
             mpvScripts.mpris playerctl
-#calibre
+
+# calibre
             calibre
-#thunar
+
+# thunar
             file-roller
-#nerd Font
+
+# nerd Font
             nerd-fonts.jetbrains-mono
 
-            wallust
-            tlp
+            wallust tlp
+
+            wineWowPackages.wayland winetricks wineWowPackages.fonts
+
+            yazi
+
+            ungoogled-chromium
+ciscoPacketTracer8
+            keepassxc
+            jq
 
 
-wineWowPackages.wayland
-winetricks
-wineWowPackages.fonts
-yazi
+            caprine
+
             ];
+
 }
+

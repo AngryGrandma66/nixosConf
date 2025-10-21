@@ -1,1 +1,11 @@
-singleton Theme 1.0 Theme.qml
+singleton Theme 1.0 theme.qml
+ClockWidget 1.0 ClockWidget.qml
+Workspaces 1.0 Workspaces.qml
+Battery 1.0 battery.qml
+Keyboard 1.0 keyboard.qml
+Mpris 1.0 mpris.qml
+Network 1.0 network.qml
+Pipewire 1.0 pipewire.qml
+Settings 1.0 settings.qml
+Shell 1.0 shell.qml
+

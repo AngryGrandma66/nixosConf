@@ -29,8 +29,8 @@ Scope {
                     spacing: 10
                     Layout.alignment: Qt.AlignLeft
                     Layout.fillWidth: true
-
-                    ClockWidget{}
+                    Mpris{}
+                    //ClockWidget{}
                 }
 
                 RowLayout {
@@ -52,7 +52,7 @@ Scope {
                     Layout.alignment: Qt.AlignRight
                     Layout.fillWidth: true
 
-                    ClockWidget{}
+           //         ClockWidget{}
                 }
             }}
         }

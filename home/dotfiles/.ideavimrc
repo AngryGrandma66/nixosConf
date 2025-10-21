@@ -1,1 +1,117 @@
-dwadwad:
+" ===============================
+" Basic settings
+" ===============================
+set number
+set relativenumber
+set numberwidth=2
+set signcolumn=yes
+set nowrap
+set scrolloff=10
+set sidescrolloff=10
+
+set expandtab
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
+set smartindent
+set breakindent
+
+set encoding=utf-8
+set mouse=a
+set showmode=false
+set splitbelow
+set splitright
+set termguicolors
+set timeoutlen=1000
+set cursorline
+set hlsearch!
+set ignorecase
+set smartcase
+set incsearch
+set colorcolumn=120
+set autowriteall
+set showtabline=2
+
+" ===============================
+" Leader key
+" ===============================
+let mapleader=" "
+let maplocalleader=" "
+
+" ===============================
+" Editing keymaps
+" ===============================
+vmap J :m '>+1<CR>gv=gv
+vmap K :m '<-2<CR>gv=gv
+
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+xnoremap <leader>p "_dP
+nmap <leader>y "+y
+vmap <leader>y "+y
+nmap <leader>Y "+Y
+nmap <leader>d "_d
+vmap <leader>d "_d
+
+imap <C-c> <Esc>
+tnoremap <Esc><Esc> <C-\><C-n>
+
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+nnoremap <leader>wv :vsplit<CR>
+nnoremap <leader>wh :split<CR>
+
+" ===============================
+" Telescope (Fuzzier) mappings
+" ===============================
+"
+nmap <leader>ff <action>(com.mituuz.fuzzier.Fuzzier)
+nmap <leader>fg <action>(com.mituuz.fuzzier.FuzzyGrepCaseInsensitive)
+
+" ===============================
+" Harpoon (HarpoonIJ) mappings
+" ===============================
+" Add current file to Harpoon
+nmap <leader>a <action>(AddToHarpoon)
+" Show Harpoon quick menu
+nmap <leader>h <action>(ShowHarpoon)
+
+" Jump to slots
+nmap <leader>1 <action>(GotoHarpoon1)
+nmap <leader>2 <action>(GotoHarpoon2)
+nmap <leader>3 <action>(GotoHarpoon3)
+nmap <leader>4 <action>(GotoHarpoon4)
+nmap <leader>5 <action>(GotoHarpoon5)
+
+" Optional: directly set slots
+nmap <leader>s1 <action>(SetHarpoon1)
+nmap <leader>s2 <action>(SetHarpoon2)
+nmap <leader>s3 <action>(SetHarpoon3)
+nmap <leader>s4 <action>(SetHarpoon4)
+nmap <leader>s5 <action>(SetHarpoon5)
+
+"lazygit"
+nmap <leader>lg <action>(LazyGit.Open)
+" ===============================
+" LSP-like mappings (IntelliJ native)
+" ===============================
+" Hover docs
+nmap <leader>cs :action QuickJavaDoc<CR>
+" Go to definition
+nmap <leader>cg :action GotoDeclaration<CR>
+" Go to declaration
+nmap <leader>cG :action GotoImplementation<CR>
+" Code actions
+nmap <leader>ca :action ShowIntentionActions<CR>
+" References
+nmap <leader>cr :action FindUsages<CR>
+" Implementations
+nmap <leader>ci :action GotoImplementation<CR>
+" Rename
+nmap <leader>cR :action RenameElement<CR>
