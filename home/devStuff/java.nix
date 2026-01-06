@@ -1,11 +1,12 @@
 { config, pkgs, lib, ... }:
 
 {
-  #home.packages = with pkgs; [
+  home.packages = with pkgs; [
   #  jdk23
-  #  maven
+    maven
   #  gradle
-  #];
+  javaPackages.compiler.openjdk25
+  ];
 
   ## Symlink the JDK(s) you want. Here we have only jdk23, but you could add others.
   #home.file."runtimes/java/23".source = "${pkgs.jdk23}";
