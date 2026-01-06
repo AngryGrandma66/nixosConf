@@ -13,8 +13,7 @@
             ./services.nix
             ./hyprland.nix
             ./users.nix
-            ./printing.nix
-            ./locale.nix
+            ./printing.nix ./locale.nix
             ./power.nix
             ./trim.nix
             ./hibernate.nix
@@ -22,6 +21,7 @@
             ./themes.nix
             ./thunar.nix
             ./ldfix.nix
+            ./steam.nix
             ];
     nix.extraOptions = ''
         experimental-features = nix-command flakes
@@ -29,4 +29,6 @@
 
     nixpkgs.config.allowUnfree = true;
     system.stateVersion     = "24.11";
-}
+
+
+}    

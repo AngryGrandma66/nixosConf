@@ -8,7 +8,10 @@
 
     nixpkgs.config.permittedInsecurePackages = [
         "libxml2-2.13.8"
+            "ciscoPacketTracer8-8.2.2"
     ];
+
+
     services.journald = {
         storage = "persistent";
         extraConfig = ''
@@ -17,4 +20,9 @@
             '';
 
     };
+    
+#programs.wireshark.enable = true;
+#programs.wireshark.usbmon.enable = true;
+#programs.wireshark.dumpcap.enable = true;
+
 }

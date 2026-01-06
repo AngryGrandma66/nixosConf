@@ -49,7 +49,7 @@ nnoremap <C-u> <C-u>zz
 nnoremap n nzzzv
 nnoremap N Nzzzv
 
-xnoremap <leader>p "_dP
+xnoremap <wwleader>p "_dP
 nmap <leader>y "+y
 vmap <leader>y "+y
 nmap <leader>Y "+Y
@@ -114,4 +114,4 @@ nmap <leader>cr :action FindUsages<CR>
 " Implementations
 nmap <leader>ci :action GotoImplementation<CR>
 " Rename
-nmap <leader>cR :action RenameElement<CR>
+nmap <leader>cR :action RenmeElement<CR>

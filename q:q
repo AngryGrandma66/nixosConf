@@ -1,0 +1,15 @@
+Permissions Size User   Date Modified Name
+drwxr-xr-x     - martin 16 Dec 16:02  .git
+.rw-r--r--     7 martin 11 May 10:49  .gitignore
+drwxr-xr-x     - martin  7 Sep 01:25  .idea
+.rw-r--r--  1.1k martin 11 May 10:49  disko.nix
+.rw-r--r--  2.7k martin 23 Nov 21:54  flake.lock
+.rw-r--r--  1.4k martin 16 Dec 16:02  flake.nix
+drwxr-xr-x     - martin 14 Jun 22:26  home
+.rw-r--r--     0 martin  6 Oct 13:41  nix
+.rwxr-xr-x   143 martin 11 May 10:49  one.sh
+drwxr-xr-x     - martin 31 May 14:39  overlays
+.rw-r--r--     0 martin 31 Dec 15:51  q:q
+drwxr-xr-x     - martin 11 Dec 13:15  system
+.rwxr-xr-x    73 martin  2 Jun 15:41  three.sh
+.rwxr-xr-x    49 martin 11 May 10:49  two.sh

@@ -13,5 +13,6 @@ services.gvfs.enable = true;
     polkit_gnome
     xdg-desktop-portal-gtk
     xdg-desktop-portal-hyprland
+    python314
   ];
 }

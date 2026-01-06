@@ -2,7 +2,7 @@
 {
     services.kdeconnect.enable = true;
     programs.quickshell.enable = true;
-
+services.easyeffects.enable = true;
 
 
     home.sessionVariables = {
@@ -65,7 +65,7 @@
             kdePackages.print-manager
 
 # rofi
-            rofi-wayland
+            rofi
 
 # obsidian
             obsidian
@@ -80,7 +80,7 @@
             mpvScripts.mpris playerctl
 
 # calibre
-            calibre
+  #          calibre
 
 # thunar
             file-roller
@@ -95,13 +95,31 @@
             yazi
 
             ungoogled-chromium
-ciscoPacketTracer8
+            ciscoPacketTracer8
             keepassxc
             jq
 
-
+socat
             caprine
 
+            obs-studio
+            nix-search-tv
+
+
+            vlc
+
+
+            calibre
+            hyprlock
+            hypridle
+            calibre
+
+
+            gnumake
+
+            ninja_1_11
+ 
+            galaxy-buds-client
             ];
 
 }

@@ -1,5 +1,4 @@
 @import url("../colors/gtk-colors.css");
-
 @define-color accent_color            @color13;
 @define-color accent_bg_color         @color13;
 @define-color accent_fg_color         @background;
