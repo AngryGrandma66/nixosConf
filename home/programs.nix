@@ -120,6 +120,11 @@ socat
             ninja_1_11
  
             galaxy-buds-client
+
+
+            file
+
+            xxd
             ];
 
 }
