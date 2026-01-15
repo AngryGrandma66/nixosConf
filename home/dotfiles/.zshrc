@@ -51,3 +51,4 @@ alias cat='bat --style=plain --paging=never'
 alias ns="nix-search-tv print | fzf --preview 'nix-search-tv preview {}' --scheme history"
 # preview in fzf
 export FZF_PREVIEW_COMMAND='bat --style=numbers --color=always {}'
+alias unfw= 'sudo systemctl restart NetworkManager'

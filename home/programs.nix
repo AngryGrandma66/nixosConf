@@ -125,6 +125,10 @@ socat
             file
 
             xxd
+
+
+qt6.qtbase
+qt6.wrapQtAppsHook
             ];
 
 }
