@@ -129,6 +129,7 @@ socat
 
 qt6.qtbase
 qt6.wrapQtAppsHook
+caligula
             ];
 
 }
