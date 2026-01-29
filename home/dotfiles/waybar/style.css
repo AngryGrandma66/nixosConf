@@ -1,0 +1,68 @@
+@import url("../colors/waybar-colors.css");
+#waybar {
+  background-color: alpha(@background, 0.3);
+  border: none;
+  margin: 0 10px;
+}
+
+#waybar .module {
+  color: alpha(@foreground, 1);
+  padding: 0 10px;
+  margin: 0;
+  font-size: 14px;
+  background-color: transparent;
+  transition: background-color 150ms ease;
+}
+
+#battery.critical:not(.charging) {
+  color:rgba(230,0,0,1); 
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#workspaces {
+  padding: 0 5px;
+}
+
+#workspaces button {
+  all: unset;
+  padding: 0 5px;
+  color: alpha(@foreground, 0.4);
+  transition: all 0.2s ease;
+}
+
+#workspaces button:hover {
+  color: alpha(@foreground, 0.8);
+  border: none;
+  text-shadow: 0 0 1.5px alpha(@color0, 0.5);
+  transition: all 1s ease;
+}
+
+#workspaces button.active {
+  color: alpha(@foreground, 1);
+  border: none;
+  text-shadow: 0 0 2px alpha(@color0, 0.5);
+}
+
+#workspaces button.empty {
+  color: alpha(@foreground, 0.2);
+  border: none;
+  text-shadow: 0 0 1.5px alpha(@color0, 0.2);
+}
+
+#workspaces button.empty:hover {
+  color: alpha(@foreground, 0.5);
+  border: none;
+  text-shadow: 0 0 1.5px alpha(@color0, 0.5);
+  transition: all 1s ease;
+}
+
+#workspaces button.empty.active {
+  color: alpha(@foreground, 0.7);
+  border: none;
+  text-shadow: 0 0 2px alpha(@color0, 0.5);
+}
+

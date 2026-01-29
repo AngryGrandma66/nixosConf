@@ -1,0 +1,165 @@
+{
+    "layer": "top",
+    "fixed-center":true,
+    "reload_style_on_change":true,
+    "modules-left":  ["custom/os_button","idle_inhibitor","tray","mpris"],
+    "modules-center": ["hyprland/workspaces"],
+    "modules-right": ["group/sound","network","hyprland/language","battery","clock","custom/notification"],
+
+    "custom/os_button": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "gnome-system-monitor"
+    },
+    "bluetooth": {
+        "format": "󰂯",
+        "format-disabled": "󰂲",
+        "format-connected": "󰂱 {num_connections}",
+        "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "on-click": "bluetooth toggle"
+    },
+
+    "mpris": {
+        "format": "{status_icon} {dynamic}",
+        "interval": 1,
+        "dynamic-len": 40,
+        "status-icons": {
+            "playing": "▶",
+            "paused": "⏸",
+            "stopped": ""
+        },
+        "dynamic-order": ["title", "artist"]
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+
+    "battery":  {
+        "format" : "{capacity}󰏰 {icon}",
+        "format-charging" : "{capacity}󰏰 {icon}",
+        "format-icons" : {
+            "charging" : ["󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
+            "default" : ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+        },
+        "states" : {
+            "critical" : 15,
+            "warning" : 30
+        },
+        "interval": 30,  
+
+        "tooltip": true,  
+
+        "on-click": "xfce4-power-manager-settings"
+    },
+
+    "clock": {
+
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "󰥔 {0:%H:%M}",
+        "format-alt": "󰥔 {0:%H:%M}   {0:%d-%m-%Y}"
+    },
+    "tray": {
+        "spacing": 10,
+        "tooltip": false
+    },
+    "hyprland/workspaces": {
+        "format": "{icon}",
+
+
+        "format-icons": {
+              "active": "",
+                "default": "",
+                "empty": ""
+        },
+        "persistent-workspaces": {
+            "*": 5
+        },
+        "all-outputs": true,
+
+
+        "sort-by": "id"
+    },
+    "hyprland/language": {
+        "format": "{short}"
+    },
+
+
+    "network": {
+        "format": "{ifname}",
+        "format-wifi": "  {signalStrength}% ",
+        "format-ethernet": "  ",
+        "format-disconnected": "Not connected",
+        "tooltip-format": "  {ifname} via {gwaddri}",
+        "tooltip-format-wifi": "   {essid} ({signalStrength}%)  {bandwidthDownBytes}  {bandwidthUpBytes} ",
+        "tooltip-format-ethernet": "  {ifname} ({ipaddr}/{cidr})  {bandwidthDownBytes}  {bandwidthUpBytes} ",
+        "tooltip-format-disconnected": "Disconnected",
+        "max-length": 50,
+        "interval": 1,
+        "on-click": "nm-connection-editor"
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{volume}% {icon} ",
+        "format-bluetooth-muted": "  {icon} ",
+        "format-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": [" ", " ", " "]
+        },
+        "scroll-step": 5,
+        "on-click-right": "pavucontrol",
+        "on-click": "amixer set Master toggle"
+    },
+    "pulseaudio#mic": {
+        "format": "{icon} {format_source}",
+        "format-source": " {volume}%",
+        "format-source-muted": " ",
+        "on-scroll-up": "amixer set Capture 5%+",
+        "on-scroll-down": "amixer set Capture 5%-",
+        "on-click-right": "pavucontrol",
+        "on-click": "amixer set Capture toggle"
+    },
+
+    "group/sound": {
+        "orientation": "horizontal",
+        "modules": ["pulseaudio", "pulseaudio#mic"]
+    },
+
+
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "󱅫",
+            "none":         "",
+            "dnd-notification":        "",
+            "dnd-none":                "󰂛",
+            "inhibited-notification":  "",
+            "inhibited-none":          "",
+            "dnd-inhibited-notification": "",
+            "dnd-inhibited-none":         ""
+        },
+        "return-type": "json",
+
+        "exec-if": "which swaync-client",
+
+        "exec": "swaync-client -swb",
+
+        "on-click": "sleep 0.1 && swaync-client -t -sw",
+
+        "on-click-right": "sleep 0.1 && swaync-client -d -sw",
+
+        "escape": true
+    }
+}
