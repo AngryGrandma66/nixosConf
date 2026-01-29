@@ -8,18 +8,18 @@
 # Make sure you have a swap partition at /dev/sda3 (or adjust to your label/UUID).
 # This partition must be at least as large as your RAM.
     swapDevices = [
-    { device = "/dev/nvme0n1p3"; }
+    { device = "/dev/nvme0n1p4"; }
     ];
 
 # Tell the kernel and initrd where to find the resume image.
 # If you use a swap *file* instead, set boot.resumeDevice to the *partition*
 # and, if needed, add resume_offset via boot.kernelParams.
-    boot.resumeDevice = "/dev/nvme0n1p3";
+    boot.resumeDevice = "/dev/nvme0n1p4";
 ################################
 # 2) Deep sleep (S3) instead of s2idle
 ################################
     boot.kernelParams = [
-        "resume=/dev/nvme0n1p3"
+        "resume=/dev/nvme0n1p4"
 #            "mem_sleep_default=deep"
 
     ];
