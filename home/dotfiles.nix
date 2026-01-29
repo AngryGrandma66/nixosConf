@@ -17,6 +17,8 @@ in
     };
     home.file.".config/hypr"= {
         source = dotfiles "hypr";
+    recursive = true;  # Add this line
+
     };
 # home.file.".config/swaync"= {
 #     source =dotfiles "swaync";
