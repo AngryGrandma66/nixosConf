@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, hyprland-virtual-desktops, ... }:
 {
     services.kdeconnect.enable = true;
     programs.quickshell.enable = true;
@@ -12,7 +12,12 @@
     xdg.mimeApps.defaultApplications = {
         "x-scheme-handler/terminal" = [ "kitty.desktop" ];
     };
-
+    wayland.windowManager.hyprland = {
+        enable = true;
+        plugins = [
+            hyprland-virtual-desktops.packages.${pkgs.system}.virtual-desktops
+        ];
+    };
 
 
 

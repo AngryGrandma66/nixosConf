@@ -41,6 +41,26 @@
         "type": "github"
       }
     },
+    "hyprland-virtual-desktops": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1769006556,
+        "narHash": "sha256-nn8NfzHLErhLZRbs5H6uvwQ+407bhR8mWKaSjtKSdtE=",
+        "owner": "levnikmyskin",
+        "repo": "hyprland-virtual-desktops",
+        "rev": "d3ad9d88281e5f19484390a6dd59b16cb2ce8768",
+        "type": "github"
+      },
+      "original": {
+        "owner": "levnikmyskin",
+        "repo": "hyprland-virtual-desktops",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1763678758,
@@ -97,6 +117,7 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
+        "hyprland-virtual-desktops": "hyprland-virtual-desktops",
         "nixpkgs": "nixpkgs",
         "nixpkgs-2505": "nixpkgs-2505",
         "nur": "nur"
