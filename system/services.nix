@@ -14,5 +14,6 @@ services.gvfs.enable = true;
     xdg-desktop-portal-gtk
     xdg-desktop-portal-hyprland
     python314
+    hyprutils
   ];
 }
