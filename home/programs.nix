@@ -76,7 +76,7 @@
             obsidian
 
 # hyprland tools
-            hyprpaper hypridle hyprshot
+            hyprpaper hypridle hyprshot hyprutils
 
 # nm applet
             networkmanagerapplet
