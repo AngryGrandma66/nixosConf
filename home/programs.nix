@@ -12,12 +12,12 @@
     xdg.mimeApps.defaultApplications = {
         "x-scheme-handler/terminal" = [ "kitty.desktop" ];
     };
-    wayland.windowManager.hyprland = {
-        enable = true;
-        plugins = [
-            hyprland-virtual-desktops.packages.${pkgs.system}.virtual-desktops
-        ];
-    };
+#    wayland.windowManager.hyprland = {
+#        enable = true;
+#        plugins = [
+#            hyprland-virtual-desktops.packages.${pkgs.system}.virtual-desktops
+#        ];
+#    };
 
 
 
