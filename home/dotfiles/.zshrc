@@ -21,7 +21,7 @@ rebuild() {
     fi
 
     # 3) Rebuild (fragment needed for your host)
-    sudo nixos-rebuild switch --flake "${flake_dir}#${host}"
+    sudo nixos-rebuild switch --flake "${flake_dir}#${host}" --impure
   )
 }
 alias config='cd /etc/nixos'
