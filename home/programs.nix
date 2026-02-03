@@ -141,6 +141,9 @@ NIXOS_OZONE_WL = "1";
             qt6.qtbase
             qt6.wrapQtAppsHook
             caligula
+
+
+            nvtopPackages.nvidia
             ];
 
 }
