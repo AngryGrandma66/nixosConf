@@ -22,6 +22,7 @@
             ./thunar.nix
             ./ldfix.nix
             ./steam.nix
+            ./graphics.nix
             ];
     nix.extraOptions = ''
         experimental-features = nix-command flakes
