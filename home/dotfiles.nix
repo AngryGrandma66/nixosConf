@@ -15,7 +15,8 @@ in
         source = dotfiles "nvim";
         recursive = true;
     };
-
+    # Hyprland config is now managed via wayland.windowManager.hyprland in programs.nix
+    # But we still need to copy the additional config files that are sourced
     home.file.".config/hypr/animations.conf".source = dotfiles "hypr/animations.conf";
     home.file.".config/hypr/autostart.conf".source = dotfiles "hypr/autostart.conf";
     home.file.".config/hypr/binds.conf".source = dotfiles "hypr/binds.conf";
