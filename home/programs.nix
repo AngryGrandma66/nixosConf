@@ -144,6 +144,7 @@ NIXOS_OZONE_WL = "1";
 
 
             nvtopPackages.nvidia
+            polychromatic
             ];
 
 }
