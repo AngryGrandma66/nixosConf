@@ -34,7 +34,7 @@
                     home-manager.backupFileExtension = "backup";
                     home-manager.users.martin = import ./home/home.nix;
                     home-manager.extraSpecialArgs = {
-inherit hyprland-virtual-desktops ;
+                        inherit hyprland-virtual-desktops ;
                         inherit pkgs-2505;
                     };
                 }

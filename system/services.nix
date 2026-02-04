@@ -17,6 +17,9 @@
             python314
             hyprutils
             openrazer-daemon
+
+
+nur.repos.mic92.hello-nur
     ];
 
 
