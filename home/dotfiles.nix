@@ -42,8 +42,8 @@ in
 
     gtk = {
         enable = true;
-        iconTheme.name   = "BeautyLine";
-        iconTheme.package = pkgs.beauty-line-icon-theme;
+        iconTheme.name   = "RosePine";
+        iconTheme.package = pkgs.rose-pine-icon-theme;
         cursorTheme.name = "rose-pine-hyprcursor";
         cursorTheme.package = pkgs.rose-pine-hyprcursor;
         theme.name = "adw-gtk3";
