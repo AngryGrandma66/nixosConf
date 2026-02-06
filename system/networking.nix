@@ -1,6 +1,6 @@
 { config, ... }:
 {
-      networking.firewall.allowedUDPPorts = [ 67 68 53 ];
+      networking.firewall.allowedUDPPorts = [ 67 68 53 8080 ];
   networking.firewall.trustedInterfaces = [ "virbr0" ];
   networking.networkmanager.enable = true;
   networking.firewall.enable       = true;
