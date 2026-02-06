@@ -1,7 +1,8 @@
 { config, pkgs, ... }:
 {
-  programs.hyprland = {
-      enable         = true;
-      xwayland.enable = true;
-  };
+ services.desktopManager.cosmic.enable = true;
+#  programs.hyprland = {
+#      enable         = true;
+#      xwayland.enable = true;
+#  };
  }
