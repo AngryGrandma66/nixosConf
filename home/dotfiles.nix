@@ -42,7 +42,7 @@ in
 
     gtk = {
         enable = true;
-        iconTheme.name   = "RosePine";
+        iconTheme.name   = "rose-pine-icons";
         iconTheme.package = pkgs.rose-pine-icon-theme;
         cursorTheme.name = "rose-pine-hyprcursor";
         cursorTheme.package = pkgs.rose-pine-hyprcursor;
