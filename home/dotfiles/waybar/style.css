@@ -65,4 +65,55 @@
   border: none;
   text-shadow: 0 0 2px alpha(@color0, 0.5);
 }
+#cffi-virtual-desktops {
+  padding: 0 5px;
+}
 
+#cffi-virtual-desktops button {
+  all: unset;
+  padding: 0 5px;
+  color: alpha(@foreground, 0.4);
+  transition: all 0.2s ease;
+}
+
+#cffi-virtual-desktops button:hover {
+  color: alpha(@foreground, 0.8);
+  border: none;
+  text-shadow: 0 0 1.5px alpha(@color0, 0.5);
+  transition: all 1s ease;
+}
+
+/* FOCUSED = ACTIVE DESKTOP */
+#cffi-virtual-desktops button.vdesk-focused {
+  color: alpha(@foreground, 1);
+  border: none;
+  text-shadow: 0 0 2px alpha(@color0, 0.5);
+}
+
+/* UNFOCUSED = INACTIVE DESKTOP */
+#cffi-virtual-desktops button.vdesk-unfocused {
+  color: alpha(@foreground, 0.4);
+  border: none;
+  text-shadow: 0 0 1.5px alpha(@color0, 0.3);
+}
+
+#cffi-virtual-desktops button.vdesk-unfocused:hover {
+  color: alpha(@foreground, 0.8);
+  border: none;
+  text-shadow: 0 0 1.5px alpha(@color0, 0.5);
+  transition: all 1s ease;
+}
+
+/* If waybar-vd also has empty state */
+#cffi-virtual-desktops button.vdesk-empty {
+  color: alpha(@foreground, 0.2);
+  border: none;
+  text-shadow: 0 0 1.5px alpha(@color0, 0.2);
+}
+
+#cffi-virtual-desktops button.vdesk-empty:hover {
+  color: alpha(@foreground, 0.5);
+  border: none;
+  text-shadow: 0 0 1.5px alpha(@color0, 0.5);
+  transition: all 1s ease;
+}

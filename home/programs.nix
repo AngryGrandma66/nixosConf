@@ -145,6 +145,9 @@ in
 
             nvtopPackages.nvidia
             polychromatic
+
+
+            mangohud
             ];
 
 }

@@ -3,7 +3,7 @@
     "fixed-center":true,
     "reload_style_on_change":true,
     "modules-left":  ["custom/os_button","idle_inhibitor","tray","mpris"],
-    "modules-center": ["hyprland/workspaces"],
+    "modules-center":     ["cffi/virtual-desktops"],// ["hyprland/workspaces"],
     "modules-right": ["group/sound","network","hyprland/language","battery","clock","custom/notification"],
 
     "custom/os_button": {
@@ -39,6 +39,16 @@
             "deactivated": ""
         }
     },
+    "cffi/virtual-desktops": {
+        "module_path": "/home/martin/.config/waybarModules/libwaybar_vd.so",
+        "format": "{icon} {name}",
+        "format-icons": {
+            "active": "",
+            "occupied": "",
+            "empty": ""
+        },
+        "show_empty": false
+    },
 
     "battery":  {
         "format" : "{capacity}󰏰 {icon}",
@@ -73,9 +83,9 @@
 
 
         "format-icons": {
-              "active": "",
-                "default": "",
-                "empty": ""
+            "active": "",
+            "default": "",
+            "empty": ""
         },
         "persistent-workspaces": {
             "*": 5
