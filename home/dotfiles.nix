@@ -44,8 +44,9 @@ in
     home.file.".config/waybar"= {
         source =dotfiles "waybar";
     };
-    home.file.".config/waybar/modules/"= {
+    home.file.".config/waybarModules/"= {
       source =  "${pkgs.nur.repos.zerozawa.waybar-vd}";
+      recursive = true;
     };
 
     home.file.".config/wallust"= {
