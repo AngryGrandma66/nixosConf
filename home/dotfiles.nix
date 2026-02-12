@@ -44,8 +44,8 @@ in
     home.file.".config/waybar"= {
         source =dotfiles "waybar";
     };
-    home.file.".config/waybar/modules/libwaybar_vd.so"= {
-      source =  "${pkgs.nur.repos.zerozawa.waybar-vd}/lib/libwaybar_vd.so";  # Adjust path as needed
+    home.file.".config/waybar/modules/"= {
+      source =  "${pkgs.nur.repos.zerozawa.waybar-vd}";
     };
 
     home.file.".config/wallust"= {
