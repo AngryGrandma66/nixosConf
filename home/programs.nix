@@ -148,6 +148,7 @@ in
 
 
             mangohud
+            auto-cpufreq
             ];
 
 }
