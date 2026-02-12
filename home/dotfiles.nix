@@ -1,4 +1,4 @@
-{ pkgs,config, ... }:
+{ pkgs,config,nur, ... }:
 let 
 OUSL = config.lib.file.mkOutOfStoreSymlink;
 
@@ -15,8 +15,8 @@ in
         source = dotfiles "nvim";
         recursive = true;
     };
-    # Hyprland config is now managed via wayland.windowManager.hyprland in programs.nix
-    # But we still need to copy the additional config files that are sourced
+# Hyprland config is now managed via wayland.windowManager.hyprland in programs.nix
+# But we still need to copy the additional config files that are sourced
     home.file.".config/hypr/animations.conf".source = dotfiles "hypr/animations.conf";
     home.file.".config/hypr/autostart.conf".source = dotfiles "hypr/autostart.conf";
     home.file.".config/hypr/binds.conf".source = dotfiles "hypr/binds.conf";
@@ -44,6 +44,10 @@ in
     home.file.".config/waybar"= {
         source =dotfiles "waybar";
     };
+    home.file.".config/waybar/modules/libwaybar_vd.so"= {
+      source =  "${pkgs.nur.repos.zerozawa.waybar-vd}/lib/libwaybar_vd.so";  # Adjust path as needed
+    };
+
     home.file.".config/wallust"= {
         source =dotfiles "wallust";
     };

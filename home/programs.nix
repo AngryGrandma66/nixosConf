@@ -1,6 +1,6 @@
 { pkgs, lib, hyprland-virtual-desktops, ... }:
 let
-  hyprlandConf = builtins.readFile ./dotfiles/hyprland.conf;
+hyprlandConf = builtins.readFile ./dotfiles/hyprland.conf;
 in
 {
     services.kdeconnect.enable = true;
@@ -9,7 +9,7 @@ in
 
     home.sessionVariables = {
         TERMINAL = "kitty";
-NIXOS_OZONE_WL = "1";
+        NIXOS_OZONE_WL = "1";
 
     };
 
@@ -21,7 +21,7 @@ NIXOS_OZONE_WL = "1";
         plugins = [
             hyprland-virtual-desktops.packages.${pkgs.system}.virtual-desktops
         ];
-        # Import your custom configuration files
+# Import your custom configuration files
         extraConfig = hyprlandConf;
     };
 

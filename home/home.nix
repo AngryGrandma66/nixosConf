@@ -1,4 +1,4 @@
-{ config, pkgs,lib,pkgs-2505, hyprland-virtual-desktops, ... }:
+{ config, pkgs,lib,pkgs-2505, hyprland-virtual-desktops,nur ,... }:
 {
   home.username      = "martin";
   home.homeDirectory = "/home/martin";
