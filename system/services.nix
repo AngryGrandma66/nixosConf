@@ -7,9 +7,6 @@
 services.gvfs.enable = true;
   services.fwupd.enable = true;
 
-environment.sessionVariables = {
-  TERMINAL = "kitty";
-};
 
 
   environment.systemPackages = with pkgs; [
