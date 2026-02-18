@@ -135,6 +135,7 @@ caligula
 
 
 localtunnel
+android-studio
             ];
 
 
