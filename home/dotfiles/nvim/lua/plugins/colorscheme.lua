@@ -1,11 +1,10 @@
 return {
-    "shaunsingh/nord.nvim",
+    "rebelot/kanagawa.nvim",
     lazy = false,
     priority = 1000,
-    name = "nord",
+    name = "kanagawa",
     config = function()
-        require("nord").set()
-        vim.cmd("colorscheme nord")
+        require("kanagawa").load("dragon")
     end,
 }
 

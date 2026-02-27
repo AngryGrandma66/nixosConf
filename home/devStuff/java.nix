@@ -2,7 +2,7 @@
 
 {
   home.packages = with pkgs; [
-  #  jdk23
+    jdk17
     maven
   #  gradle
   javaPackages.compiler.openjdk25
