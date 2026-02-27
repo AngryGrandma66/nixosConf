@@ -4,7 +4,6 @@
     programs.quickshell.enable = true;
 services.easyeffects.enable = true;
 
-
     home.sessionVariables = {
         TERMINAL = "kitty";
     };
