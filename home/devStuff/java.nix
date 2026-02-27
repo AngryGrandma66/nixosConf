@@ -5,7 +5,7 @@
     jdk17
     maven
   #  gradle
-  javaPackages.compiler.openjdk25
+  #javaPackages.compiler.openjdk25
   ];
 
   ## Symlink the JDK(s) you want. Here we have only jdk23, but you could add others.
