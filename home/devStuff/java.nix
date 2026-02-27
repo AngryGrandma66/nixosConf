@@ -8,6 +8,7 @@
   #javaPackages.compiler.openjdk25
   ];
 
+  home.file."runtimes/java/17".source = "${pkgs.jdk17}";
   ## Symlink the JDK(s) you want. Here we have only jdk23, but you could add others.
   #home.file."runtimes/java/23".source = "${pkgs.jdk23}";
   #home.file."runtimes/java/21".source = "${pkgs.jdk21}";
