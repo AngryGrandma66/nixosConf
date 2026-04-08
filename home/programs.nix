@@ -136,6 +136,9 @@ caligula
 localtunnel
 android-studio
 telegram-desktop
+
+
+qalculate-gtk
             ];
 
 
