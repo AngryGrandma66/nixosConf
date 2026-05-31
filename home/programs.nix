@@ -139,6 +139,10 @@ telegram-desktop
 
 
 qalculate-gtk
+
+
+claude-code
+
             ];
 
 
