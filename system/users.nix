@@ -4,6 +4,6 @@
     isNormalUser = true;
     home         = "/home/martin";
     shell        = pkgs.zsh;
-    extraGroups  = [ "wheel" "networkmanager" "libvirtd" "audio" "video" "lp" "lpadmin" ];
+    extraGroups  = [ "wheel" "networkmanager" "libvirtd" "audio" "video" "lp" "lpadmin" "docker"];
   };
 }
