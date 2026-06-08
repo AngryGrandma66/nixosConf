@@ -143,6 +143,7 @@ qalculate-gtk
 
 claude-code
 
+docker
             ];
 
 
