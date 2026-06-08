@@ -16,7 +16,7 @@
             ./printing.nix ./locale.nix
             ./power.nix
             ./trim.nix
-            ./hibernate.nix
+#            ./hibernate.nix
             ./filesystems.nix
             ./themes.nix
             ./thunar.nix

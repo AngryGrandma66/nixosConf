@@ -45,10 +45,10 @@ services.easyeffects.enable = true;
             firefox neovim kitty
 
 # JetBrains IDEs (patched automatically)
-            jetbrains.idea-ultimate
+            jetbrains.idea
             jetbrains.webstorm
             jetbrains.phpstorm
-            jetbrains.pycharm-professional
+            jetbrains.pycharm
             jetbrains.clion
 
 # Printer GUI
@@ -94,7 +94,7 @@ services.easyeffects.enable = true;
             yazi
 
             ungoogled-chromium
-            ciscoPacketTracer8
+            #ciscoPacketTracer8
             keepassxc
             jq
 
